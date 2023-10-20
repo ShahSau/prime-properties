@@ -6,7 +6,7 @@ import {
   signInSuccess,
   signInFailure,
 } from '../redux/user/userSlice';
-
+import OAuth from '../components/OAuth';
 const SignIn = () => {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
@@ -42,7 +42,7 @@ const SignIn = () => {
     }
   };
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='p-3 max-w-lg mx-auto '>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -67,12 +67,14 @@ const SignIn = () => {
           {loading ? 'Loading...' : 'Sign In'}
         </button>
       </form>
-      <div className='flex gap-2 mt-5'>
-        <p>Dont have an account?</p>
-        <Link to={'/sign-up'}>
-          <span className='text-blue-700'>Sign up</span>
-        </Link>
-      </div>
+      {/* social media login*/}
+      <OAuth />
+      <p className="mt-10 text-center text-sm text-gray-500">
+            Not a member?{' '}
+            <Link to={'/sign-up'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              Sign up
+            </Link>
+          </p>
       {error && <p className='text-red-500 mt-5'>{error}</p>}
     </div>
   );
