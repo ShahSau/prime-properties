@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const listingSchema = new mongoose.Schema(
   {
@@ -23,12 +23,12 @@ const listingSchema = new mongoose.Schema(
       required: true,
     },
     area:{
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     agency:{
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     bathrooms: {
       type: Number,
@@ -64,8 +64,8 @@ const listingSchema = new mongoose.Schema(
     },
   },
   { timestamps: true }
-);
+)
 
-const Listing = mongoose.model('Listing', listingSchema);
+const Listing = mongoose.model('Listing', listingSchema)
 
-export default Listing;
+export default Listing

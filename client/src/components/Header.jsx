@@ -1,16 +1,16 @@
-import { FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import {  useState } from 'react';
-import { useSelector } from 'react-redux';
+import { FaSearch } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import {  useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user)
   const handleSubmit = (e) => {
-    e.preventDefault();
-    
-  };
+    e.preventDefault()
+
+  }
 
 
   return (
@@ -58,5 +58,5 @@ export default function Header() {
         </ul>
       </div>
     </header>
-  );
+  )
 }
