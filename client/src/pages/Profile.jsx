@@ -235,16 +235,21 @@ const Profile = () => {
       <p className='text-green-700 mt-5'>
         {updateSuccess ? 'User is updated successfully!' : ''}
       </p>
-
+      <button onClick={handleShowListings} className='text-green-700 w-full'>
+            Show Listings
+      </button>
+      <p className='text-red-700 mt-5'>
+        {showListingsError ? 'Error showing listings' : ''}
+      </p>
       {userListings &&
         userListings.length > 0 &&
         <>
-          <button onClick={handleShowListings} className='text-green-700 w-full'>
+          {/* <button onClick={handleShowListings} className='text-green-700 w-full'>
             Show Listings
           </button>
           <p className='text-red-700 mt-5'>
             {showListingsError ? 'Error showing listings' : ''}
-          </p>
+          </p> */}
           <div className="flex flex-col gap-4">
             <h1 className='text-center mt-7 text-2xl font-semibold'>Your Listings</h1>
             {userListings.map((listing) => (
@@ -273,7 +278,9 @@ const Profile = () => {
                   >
                   Delete
                   </button>
-                  <button className='text-green-700 uppercase'>Edit</button>
+                  <Link to={`/update-listing/${listing._id}`}>
+                    <button className='text-green-700 uppercase'>Edit</button>
+                  </Link>
                 </div>
               </div>
             ))}
