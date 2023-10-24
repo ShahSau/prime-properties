@@ -1,13 +1,6 @@
 {
   "main": {
-    "header": "Welcome to the app!",
-    "new_messages_one": "You have one new message",
-    "new_messages_other": "You have {{count}} new messages",
-    "current_date": "Today is {{date, DATE_LONG}}",
-    "incoming_message": "You have a new message from {{from}}",
-    "message_contents": "They say: {{body}}",
-    "message_contents_male": "He says: {{body}}",
-    "message_contents_female": "She says: {{body}}"
+    "header": "Welcome to the app!"
   },
   "home":{
     "header": "Welcome to home page!"
@@ -17,5 +10,29 @@
   },
   "about":{
     "header": "About Us"
+  },
+  "createListing":{
+    "header": "Create a Listing",
+    "sell": "Sell",
+    "rent": "Rent",
+    "parking": "Parking Sport",
+    "furnished": "Furnished",
+    "offer": "Offer",
+    "beds": "Beds",
+    "baths": "Baths",
+    "area": "Area",
+    "regular": "Regular Price",
+    "month": "Month",
+    "discount": "Discounted Price",
+    "images": "Images",
+    "img_desc":"The first image will be the cover (max 6)",
+    "delete": "Delete"
+  },
+  "listing":{
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "link": "Link copied",
+    "desc": "Description",
+    "contact": "Contact Landlord"
   }
 }

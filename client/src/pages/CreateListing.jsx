@@ -8,8 +8,10 @@ import {
 import { app } from '../firebase'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function CreateListing() {
+  const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const [files, setFiles] = useState([])
@@ -161,7 +163,7 @@ export default function CreateListing() {
   return (
     <main className='p-3 max-w-4xl mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>
-        Create a Listing
+        {t('createListing.header')}
       </h1>
       <form  onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
         <div className='flex flex-col gap-4 flex-1'>
@@ -212,7 +214,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === 'sale'}
               />
-              <span>Sell</span>
+              <span>{t('createListing.sell')} </span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -222,7 +224,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === 'rent'}
               />
-              <span>Rent</span>
+              <span>{t('createListing.rent')}</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -232,7 +234,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.parking}
               />
-              <span>Parking spot</span>
+              <span>{t('createListing.parking')}</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -242,7 +244,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.furnished}
               />
-              <span>Furnished</span>
+              <span>{t('createListing.furnished')}</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -252,7 +254,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.offer}
               />
-              <span>Offer</span>
+              <span>{t('createListing.offer')}</span>
             </div>
           </div>
           <div className='flex flex-wrap gap-6'>
@@ -267,7 +269,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
-              <p>Beds</p>
+              <p>{t('createListing.beds')}</p>
             </div>
             <div className='flex items-center gap-2'>
               <input
@@ -280,7 +282,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
-              <p>Baths</p>
+              <p>{t('createListing.baths')}</p>
             </div>
             {/* */}
             <div className='flex items-center gap-2'>
@@ -294,7 +296,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 value={formData.area}
               />
-              <p>Area</p>
+              <p>{t('createListing.area')}</p>
             </div>
             <div className='flex items-center gap-2'>
               <input
@@ -308,9 +310,9 @@ export default function CreateListing() {
                 value={formData.regularPrice}
               />
               <div className='flex flex-col items-center'>
-                <p>Regular price</p>
+                <p>{t('createListing.regular')}</p>
                 {formData.type === 'rent' && (
-                  <span className='text-xs'>($ / month)</span>
+                  <span className='text-xs'>($ / {t('createListing.month')})</span>
                 )}
               </div>
             </div>
@@ -341,9 +343,9 @@ export default function CreateListing() {
                   value={formData.discountPrice}
                 />
                 <div className='flex flex-col items-center'>
-                  <p>Discounted price</p>
+                  <p>{t('createListing.discount')}</p>
                   {formData.type === 'rent' && (
-                    <span className='text-xs'>($ / month)</span>
+                    <span className='text-xs'>($ / {t('createListing.month')})</span>
                   )}
                 </div>
               </div>
@@ -351,8 +353,8 @@ export default function CreateListing() {
           </div>
         </div>
         <div className="flex flex-col flex-1 gap-4">
-          <p className='font-semibold'>Images:
-            <span className='font-normal text-gray-600 ml-2'>The first image will be the cover (max 6)</span>
+          <p className='font-semibold'>{t('createListing.images')}
+            <span className='font-normal text-gray-600 ml-2'>{t('createListing.img_desc')}</span>
           </p>
           {/* <div className="flex gap-4">
             <input className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/*' multiple />
@@ -395,7 +397,7 @@ export default function CreateListing() {
                   onClick={() => handleRemoveImage(index)}
                   className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
                 >
-                  Delete
+                  {t('createListing.delete')}
                 </button>
               </div>
             ))}

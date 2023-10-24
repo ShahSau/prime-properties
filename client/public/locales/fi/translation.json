@@ -1,13 +1,6 @@
 {
   "main": {
-    "header": "Laipni lūdzam lietotnē!",
-    "new_messages_zero": "Jums nav nevienas jaunas ziņas",
-    "new_messages_one": "Jums ir viena jauna ziņa",
-    "new_messages_other": "Jums ir {{count}} jaunas ziņas",
-    "current_date": "Šodien ir {{date, DATE_LONG}}",
-    "message_contents": "Viņi saka: {{body}}",
-    "message_contents_male": "Viņš saka: {{body}}",
-    "message_contents_female": "Viņa saka: {{body}}"
+    "header": "Tervetuloa"
   },
   "home":{
     "header": "Tervetuloa kotisivuille!"
@@ -17,5 +10,29 @@
   },
   "about":{
     "header": "Tietoa meistä"
+  },
+  "createListing":{
+    "header": "Luo listaus",
+    "sell": "Myy",
+    "rent": "Vuokra",
+    "parking": "Parkkipaikka",
+    "furnished": "Kalustettu",
+    "offer": "Tarjous",
+    "beds": "Vuoteet",
+    "baths": "Kylpyhuoneet",
+    "area": "Alue",
+    "regular": "Normaali",
+    "month": "Kuukausi",
+    "discount": "Alennus",
+    "images": "Kuvat",
+    "img_desc":"Ensimmäinen kuva on kansi (enintään 6)",
+    "delete": "Poista"
+  },
+  "listing":{
+    "loading": "Ladataan...",
+    "error": "Virhe ladattaessa listauksia",
+    "link": "Linkki",
+    "desc": "Kuvaus",
+    "contact": "Ota yhteyttä"
   }
 }

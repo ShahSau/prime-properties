@@ -3,7 +3,6 @@ const Home = () => {
   const { t, i18n } = useTranslation()
   return (
     <div>
-      Home
       <h1>{t('home.header')}</h1>
     </div>
   )
