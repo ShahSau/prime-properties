@@ -10,6 +10,7 @@ import UpdateListing from './pages/UpdateListing'
 import CreateListing from './pages/CreateListing'
 import Header from './components/Header'
 import PrivateRoute from './components/PrivateRoute'
+import { Suspense } from 'react'
 
 
 const App = () => {
@@ -38,4 +39,11 @@ const App = () => {
   )
 }
 
-export default App
+
+export default function WrappedApp() {
+  return (
+    <Suspense fallback="...loading">
+      <App />
+    </Suspense>
+  )
+}
