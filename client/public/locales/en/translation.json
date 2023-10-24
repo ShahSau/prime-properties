@@ -1,0 +1,38 @@
+{
+  "main": {
+    "header": "Welcome to the app!"
+  },
+  "home":{
+    "header": "Welcome to home page!"
+  },
+  "contact":{
+    "send": "Send Email"
+  },
+  "about":{
+    "header": "About Us"
+  },
+  "createListing":{
+    "header": "Create a Listing",
+    "sell": "Sell",
+    "rent": "Rent",
+    "parking": "Parking Sport",
+    "furnished": "Furnished",
+    "offer": "Offer",
+    "beds": "Beds",
+    "baths": "Baths",
+    "area": "Area",
+    "regular": "Regular Price",
+    "month": "Month",
+    "discount": "Discounted Price",
+    "images": "Images",
+    "img_desc":"The first image will be the cover (max 6)",
+    "delete": "Delete"
+  },
+  "listing":{
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "link": "Link copied",
+    "desc": "Description",
+    "contact": "Contact Landlord"
+  }
+}

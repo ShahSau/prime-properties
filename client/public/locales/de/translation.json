@@ -1,0 +1,38 @@
+{
+  "main": {
+    "header": "Willkommen auf der Homepage!"
+  },
+  "home":{
+    "header": "Willkommen auf der Homepage!"
+  },
+  "contact":{
+    "send": "E-Mail senden"
+  },
+  "about":{
+    "header": "Über uns"
+  },
+  "createListing":{
+    "header": "Erstellen Sie einen Eintrag",
+    "sell": "Verkaufen",
+    "rent": "Mieten",
+    "parking": "Parken",
+    "furnished": "Möbliert",
+    "offer": "Angebot",
+    "beds": "Betten",
+    "baths": "Bäder",
+    "area": "Fläche",
+    "regular": "Regelmäßig",
+    "month": "Monat",
+    "discount": "Rabatt",
+    "images": "Bilder",
+    "img_desc":"Das erste Bild wird das Cover sein (maximal 6)",
+    "delete": "Löschen"
+  },
+  "listing":{
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schief gelaufen",
+    "link": "Link kopiert",
+    "desc": "Beschreibung",
+    "contact": "Kontaktieren Sie den Vermieter"
+  }
+}

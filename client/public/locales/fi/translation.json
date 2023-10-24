@@ -1,0 +1,38 @@
+{
+  "main": {
+    "header": "Tervetuloa"
+  },
+  "home":{
+    "header": "Tervetuloa kotisivuille!"
+  },
+  "contact":{
+    "send": "Lähettää sähköpostia"
+  },
+  "about":{
+    "header": "Tietoa meistä"
+  },
+  "createListing":{
+    "header": "Luo listaus",
+    "sell": "Myy",
+    "rent": "Vuokra",
+    "parking": "Parkkipaikka",
+    "furnished": "Kalustettu",
+    "offer": "Tarjous",
+    "beds": "Vuoteet",
+    "baths": "Kylpyhuoneet",
+    "area": "Alue",
+    "regular": "Normaali",
+    "month": "Kuukausi",
+    "discount": "Alennus",
+    "images": "Kuvat",
+    "img_desc":"Ensimmäinen kuva on kansi (enintään 6)",
+    "delete": "Poista"
+  },
+  "listing":{
+    "loading": "Ladataan...",
+    "error": "Virhe ladattaessa listauksia",
+    "link": "Linkki",
+    "desc": "Kuvaus",
+    "contact": "Ota yhteyttä"
+  }
+}

@@ -16,8 +16,10 @@ import {
 } from 'react-icons/fa'
 import { BiArea } from 'react-icons/bi'
 import Contact from '../components/Contact'
+import { useTranslation } from 'react-i18next'
 
 export default function Listing() {
+  const { t, i18n } = useTranslation()
   SwiperCore.use([Navigation])
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -51,9 +53,9 @@ export default function Listing() {
 
   return (
     <main>
-      {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
+      {loading && <p className='text-center my-7 text-2xl'>{t('listing.loading')}</p>}
       {error && (
-        <p className='text-center my-7 text-2xl'>Something went wrong!</p>
+        <p className='text-center my-7 text-2xl'>{t('listing.error')}</p>
       )}
       {listing && !loading && !error && (
         <div>
@@ -84,7 +86,7 @@ export default function Listing() {
           </div>
           {copied && (
             <p className='fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2'>
-              Link copied!
+              {t('listing.link')}
             </p>
           )}
           <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
@@ -114,7 +116,7 @@ export default function Listing() {
               )}
             </div>
             <p className='text-slate-800'>
-              <span className='font-semibold text-black'>Description - </span>
+              <span className='font-semibold text-black'>{t('listing.desc')}  </span>
               {listing.description}
             </p>
             <ul className='text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6'>
@@ -145,7 +147,7 @@ export default function Listing() {
             </ul>
             {currentUser && listing.userRef !== currentUser._id && !contact && (
               <button onClick={() => setContact(true)} className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'>
-                Contact landlord
+                {t('listing.contact')}
               </button>
             )}
             {contact && <Contact listing={listing}/>}
