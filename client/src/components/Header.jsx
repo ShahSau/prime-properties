@@ -1,17 +1,28 @@
 import { FaSearch } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import {  useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {  useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import LanguageDropdown from './LanguageDropdown'
 
 export default function Header() {
-  const [searchTerm, setSearchTerm] = useState('')
-
   const { currentUser } = useSelector((state) => state.user)
+  const [searchTerm, setSearchTerm] = useState('')
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    const urlParams = new URLSearchParams(window.location.search)
+    urlParams.set('searchTerm', searchTerm)
+    const searchQuery = urlParams.toString()
+    navigate(`/search?${searchQuery}`)
   }
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search)
+    const searchTermFromUrl = urlParams.get('searchTerm')
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl)
+    }
+  }, [location.search])
 
 
   return (
