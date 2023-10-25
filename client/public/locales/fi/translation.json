@@ -58,5 +58,24 @@
     "link": "Linkki",
     "desc": "Kuvaus",
     "contact": "Ota yhteyttä"
+  },
+  "header":{
+    "home": "Koti",
+    "about": "Tietoa meistä",
+    "signin": "Kirjaudu sisään"
+  },
+  "profile":{
+    "title": "Profiili",
+    "error1":"Virhe kuvan latauksessa (kuvan on oltava alle 2 Mt)",
+    "success1":"Kuva ladattu onnistuneesti",
+    "loading": "Ladataan...",
+    "update": "Päivitä",
+    "createListing": "Luo listaus",
+    "deleteAccount": "Poista tili",
+    "signout": "Kirjaudu ulos",
+    "showListings": "Näytä listaukset",
+    "yourListings": "Sinun listaukset",
+    "delete": "Poista",
+    "edit": "Muokkaa"
   }
 }

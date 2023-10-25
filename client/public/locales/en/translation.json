@@ -58,5 +58,24 @@
     "link": "Link copied",
     "desc": "Description",
     "contact": "Contact Landlord"
+  },
+  "header":{
+    "home": "Home",
+    "about": "About",
+    "signin": "Sign In"
+  },
+  "profile":{
+    "title": "Profile",
+    "error1":"Error Image upload (image must be less than 2 mb)",
+    "success1":"Image successfully uploaded!",
+    "loading": "Loading...",
+    "update": "Update",
+    "createListing": "Create a Listing",
+    "deleteAccount": "Delete Account",
+    "signout": "Sign Out",
+    "showListings": "Show My Listings",
+    "yourListings": "Your Listings",
+    "delete": "Delete",
+    "edit": "Edit"
   }
 }

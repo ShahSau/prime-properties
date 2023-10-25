@@ -58,5 +58,24 @@
     "link": "Link kopiert",
     "desc": "Beschreibung",
     "contact": "Kontaktieren Sie den Vermieter"
+  },
+  "header":{
+    "home": "Zuhause",
+    "about": "Über",
+    "signin": "Anmelden"
+  },
+  "profile":{
+    "title": "Profil",
+    "error1":"Fehler beim Hochladen des Bildes (Bild muss kleiner als 2 MB sein)",
+    "success1":"Profil erfolgreich aktualisiert",
+    "loading": "Wird geladen...",
+    "update": "Aktualisieren",
+    "createListing": "Erstellen Sie einen Eintrag",
+    "deleteAccount": "Konto löschen",
+    "signout": "Abmelden",
+    "showListings": "Listings anzeigen",
+    "yourListings": "Ihre Listings",
+    "delete": "Löschen",
+    "edit": "Bearbeiten"
   }
 }

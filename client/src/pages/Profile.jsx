@@ -18,6 +18,7 @@ import {
 } from '../redux/user/userSlice'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Profile = () => {
   const fileRef = useRef(null)
@@ -30,7 +31,7 @@ const Profile = () => {
   const [showListingsError, setShowListingsError] = useState(false)
   const [userListings, setUserListings] = useState([])
   const dispatch = useDispatch()
-
+  const { t, i18n } = useTranslation()
   useEffect(() => {
     if (file) {
       handleFileUpload(file)
@@ -158,10 +159,10 @@ const Profile = () => {
       console.log(error.message)
     }
   }
-
+  console.log(t)
   return (
     <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
+      <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
       <form  onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -179,12 +180,12 @@ const Profile = () => {
         <p className='text-sm self-center'>
           {fileUploadError ? (
             <span className='text-red-700'>
-              Error Image upload (image must be less than 2 mb)
+              {t('profile.error1')}
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
-            <span className='text-green-700'>Image successfully uploaded!</span>
+            <span className='text-green-700'>{t('profile.success1')}</span>
           ) : (
             ''
           )}
@@ -216,10 +217,10 @@ const Profile = () => {
           disabled={loading}
           className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'Loading...' : 'Update'}
+          {loading ? t('profile.loading') : t('profile.update')}
         </button>
         <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={'/create-listing'}>
-          Create Listing
+          {t('profile.createListing')}
         </Link>
       </form>
       <div className="flex justify-between mt-5">
@@ -227,16 +228,16 @@ const Profile = () => {
           onClick={handleDeleteUser}
           className='text-red-700 cursor-pointer'
         >
-          Delete account
+          {t('profile.deleteAccount')}
         </span>
-        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>Sign out</span>
+        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>{t('profile.signout')}</span>
       </div>
       <p className='text-red-700 mt-5'>{error ? error : ''}</p>
       <p className='text-green-700 mt-5'>
         {updateSuccess ? 'User is updated successfully!' : ''}
       </p>
       <button onClick={handleShowListings} className='text-green-700 w-full'>
-            Show Listings
+        {t('profile.showListings')}
       </button>
       <p className='text-red-700 mt-5'>
         {showListingsError ? 'Error showing listings' : ''}
@@ -244,14 +245,8 @@ const Profile = () => {
       {userListings &&
         userListings.length > 0 &&
         <>
-          {/* <button onClick={handleShowListings} className='text-green-700 w-full'>
-            Show Listings
-          </button>
-          <p className='text-red-700 mt-5'>
-            {showListingsError ? 'Error showing listings' : ''}
-          </p> */}
           <div className="flex flex-col gap-4">
-            <h1 className='text-center mt-7 text-2xl font-semibold'>Your Listings</h1>
+            <h1 className='text-center mt-7 text-2xl font-semibold'>{t('profile.yourListings')}</h1>
             {userListings.map((listing) => (
               <div
                 key={listing._id}
@@ -276,10 +271,10 @@ const Profile = () => {
                     onClick={() => handleListingDelete(listing._id)}
                     className='text-red-700 uppercase'
                   >
-                  Delete
+                    {t('profile.delete')}
                   </button>
                   <Link to={`/update-listing/${listing._id}`}>
-                    <button className='text-green-700 uppercase'>Edit</button>
+                    <button className='text-green-700 uppercase'>{t('profile.edit')}</button>
                   </Link>
                 </div>
               </div>

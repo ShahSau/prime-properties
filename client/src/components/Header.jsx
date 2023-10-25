@@ -3,8 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import {  useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import LanguageDropdown from './LanguageDropdown'
-
+import { useTranslation } from 'react-i18next'
 export default function Header() {
+  const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)
   const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
@@ -52,19 +53,19 @@ export default function Header() {
         <ul className='flex gap-4'>
           <Link to='/'>
             <li className='hidden sm:inline text-slate-700 hover:underline'>
-              Home
+              {t('header.home')}
             </li>
           </Link>
           <Link to='/about'>
             <li className='hidden sm:inline text-slate-700 hover:underline'>
-              About
+              {t('header.about')}
             </li>
           </Link>
           <Link to='/profile'>
             {currentUser ? (
               <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />
             ) : (
-              <li className=' text-slate-700 hover:underline'> Sign in</li>
+              <li className=' text-slate-700 hover:underline'>{t('header.signin')}</li>
             )}
           </Link>
           <LanguageDropdown />
