@@ -9,7 +9,31 @@
     "send": "Send Email"
   },
   "about":{
-    "header": "About Us"
+    "header": "About Us",
+    "title": "We're a passionate group of people working to build the future of real estate.",
+    "title_desc":"Prime Properties is a leading real estate agency that specializes in helping clients buy, sell, and rent properties in the most desirable neighborhoods. Our team of experienced agents is dedicated to providing exceptional service and making the buying and selling process as smooth as possible.",
+    "logo_title":"We've worked with hundreds of amazing people",
+    "mission_title":"Our mission",
+    "mission_desc1":"Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.",
+    "mission_desc2":"Our team of agents has a wealth of experience and knowledge in the real estate industry, and we are committed to providing the highest level of service to our clients. We believe that buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that a reality for each and every one of our clients.",
+    "people_title":"Our people",
+    "people_desc":"We have been a prominent figure in the real estate industry for over 15 years. With a proven track record of successful transactions and a deep understanding of the local market, we are your go-to agent for buying or selling property.",
+    "val_title":"Our values",
+    "labe1":"People on the team",
+    "labe2":"Worth of property sold",
+    "labe3":"Users on the platform",
+    "continuous_title":"Continuous Learning.",
+    "continuous_desc":"Stay curious and committed to lifelong learning. Stay updated with the latest trends and technologies in our field.",
+    "learn_title":"Learn from Failures.",
+    "learn_desc":"Instead of dwelling on failures, use them as learning opportunities. Understand what went wrong and how you can improve in the future.",
+    "customer_title":"Customer-Centric Approach.",
+    "customer_desc":"Provide exceptional value and service to your customers. Understand their needs and go the extra mile to meet or exceed their expectations.",
+    "stay_title":"Stay Resilient.",
+    "stay_desc":"Embrace challenges and setbacks as opportunities for growth. Learn from failures and use them as stepping stones toward success.",
+    "set_title":"Set High Standards.",
+    "set_desc":"Aim for excellence in everything you do. Do not settle for mediocrity; strive for the best.",
+    "embrace_title":"Embrace Innovation.",
+    "embrace_desc":"Stay open to new ideas, technologies, and methodologies. Be willing to adapt and innovate to stay ahead."
   },
   "createListing":{
     "header": "Create a Listing",

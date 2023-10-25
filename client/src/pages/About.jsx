@@ -1,62 +1,54 @@
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { AiOutlineBars } from 'react-icons/ai'
-import { RxCross1 } from 'react-icons/rx'
 import { BsFillRocketTakeoffFill } from 'react-icons/bs'
 import { BiSolidGroup } from 'react-icons/bi'
 import { TbHandStop } from 'react-icons/tb'
 import { HiSun,HiSparkles,HiAcademicCap } from 'react-icons/hi'
 
-
-const values = [
-  {
-    name: 'Be world-class.',
-    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
-    icon: BsFillRocketTakeoffFill,
-  },
-  {
-    name: 'Take responsibility.',
-    description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-    icon: TbHandStop,
-  },
-  {
-    name: 'Be supportive.',
-    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus voluptas blanditiis et.',
-    icon: BiSolidGroup,
-  },
-  {
-    name: 'Always learning.',
-    description: 'Iure sed ab. Aperiam optio placeat dolor facere. Officiis pariatur eveniet atque et dolor.',
-    icon: HiAcademicCap,
-  },
-  {
-    name: 'Share everything you know.',
-    description: 'Laudantium tempora sint ut consectetur ratione. Ut illum ut rem numquam fuga delectus.',
-    icon: HiSparkles,
-  },
-  {
-    name: 'Enjoy downtime.',
-    description: 'Culpa dolorem voluptatem velit autem rerum qui et corrupti. Quibusdam quo placeat.',
-    icon: HiSun,
-  },
-]
-const stats = [
-  { label: 'Transactions every 24 hours', value: '44 million' },
-  { label: 'Assets under holding', value: '$119 trillion' },
-  { label: 'New users annually', value: '46,000' },
-]
-
 const About = () => {
   const { t, i18n } = useTranslation()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  return (
-    // <div>
-    //   About
-    //   <h1>{t('about.header')}</h1>
-    // </div>
-    <div className="bg-white">
 
+  const values = [
+    {
+      name: t('about.continuous_title'),
+      description: t('about.continuous_desc'),
+      icon: HiAcademicCap,
+    },
+    {
+      name: t('about.learn_title'),
+      description: t('about.learn_desc'),
+      icon: TbHandStop,
+    },
+    {
+      name: t('about.customer_title'),
+      description: t('about.customer_desc'),
+      icon: BiSolidGroup,
+    },
+    {
+      name: t('about.stay_title'),
+      description: t('about.stay_desc'),
+      icon: BsFillRocketTakeoffFill,
+    },
+    {
+      name: t('about.set_title'),
+      description: t('about.set_desc'),
+      icon: HiSparkles,
+    },
+    {
+      name: t('about.embrace_title'),
+      description: t('about.embrace_desc'),
+      icon: HiSun,
+    },
+  ]
+
+  const stats = [
+    { label: t('about.labe1'), value: '120' },
+    { label: t('about.labe2'), value: '$119 trillion' },
+    { label: t('about.labe3'), value: '46,000' },
+  ]
+
+  return (
+    <div className="bg-white">
       <main className="isolate">
         {/* Hero section */}
         <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-10">
@@ -64,13 +56,11 @@ const About = () => {
           <div className="mx-auto max-w-7xl px-6 py-32 sm:py-32 lg:px-8 lg:mx-0 lg:gap-x-10 lg:gap-y-6">
             <div className="mx-auto max-w-2xl ">
               <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
-                We&apos;re a passionate group of people working to build the future of real estate.
+                {t('about.title')}
               </h1>
               <div className="mt-6 max-w-xl lg:mt-10 xl:col-end-1 xl:row-start-1">
                 <p className="text-lg leading-8 text-gray-600">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                  amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui
-                  irure qui lorem cupidatat commodo.
+                  {t('about.title_desc')}
                 </p>
               </div>
             </div>
@@ -82,12 +72,8 @@ const About = () => {
         <div className="mx-auto mt-12 max-w-7xl mb-12 sm:mt-10 sm:px-6 lg:px-8">
           <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
             <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            We’ve worked with hundreds of amazing people
+              {t('about.logo_title')}
             </h2>
-            {/* <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-              Aliquip reprehenderit incididunt amet quis fugiat ut velit. Sit occaecat labore proident cillum in nisi
-              adipisicing officia excepteur tempor deserunt.
-            </p> */}
             <div className="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5">
               <img
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
@@ -140,25 +126,15 @@ const About = () => {
         {/* Content section */}
         <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our mission</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('about.mission_title')}</h2>
             <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
               <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
                 <p className="text-xl leading-8 text-gray-600">
-                  Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                  eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget.
-                  Eleifend egestas fringilla sapien.
+                  {t('about.mission_desc1')}
                 </p>
                 <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
                   <p>
-                    Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed
-                    amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius
-                    sit neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-                    Mattis mauris semper sed amet vitae sed turpis id.
-                  </p>
-                  <p className="mt-10">
-                    Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie
-                    auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et
-                    ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
+                    {t('about.mission_desc2')}
                   </p>
                 </div>
               </div>
@@ -181,14 +157,9 @@ const About = () => {
           <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
               <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our people</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('about.people_title')}</h2>
                 <p className="mt-6 text-xl leading-8 text-gray-600">
-                  Quasi est quaerat. Sit molestiae et. Provident ad dolorem occaecati eos iste. Soluta rerum quidem
-                  minus ut molestiae velit error quod. Excepturi quidem expedita molestias quas.
-                </p>
-                <p className="mt-6 text-base leading-7 text-gray-600">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                  amet fugiat veniam occaecat fugiat. Quasi aperiam sit non sit neque reprehenderit.
+                  {t('about.people_desc')}
                 </p>
               </div>
               <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
@@ -231,11 +202,7 @@ const About = () => {
         {/* Value section */}
         <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0 back">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our values</h2>
-            <p className="mt-6 text-lg leading-8 ">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste
-              dolor cupiditate blanditiis.
-            </p>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('about.val_title')}</h2>
           </div>
           <dl className="mx-auto mt-16 mb-2 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
             {values.map((value) => (

@@ -9,7 +9,31 @@
     "send": "E-Mail senden"
   },
   "about":{
-    "header": "Über uns"
+    "header": "Über uns",
+    "title": "Wir sind eine leidenschaftliche Gruppe von Menschen, die daran arbeiten, die Zukunft der Immobilien zu gestalten.",
+    "title_desc":"Prime Properties ist eine führende Immobilienagentur, die sich darauf spezialisiert hat, Kunden beim Kauf, Verkauf und der Vermietung von Immobilien in den begehrtesten Vierteln zu unterstützen. Unser Team aus erfahrenen Maklern ist bestrebt, außergewöhnlichen Service zu bieten und den Kauf- und Verkaufsprozess so reibungslos wie möglich zu gestalten.",
+    "logo_title":"Wir haben mit Hunderten großartiger Menschen zusammengearbeitet",
+    "mission_title":"Unsere Aufgabe",
+    "mission_desc1":"Unsere Mission ist es, unseren Kunden dabei zu helfen, ihre Immobilienziele zu erreichen, indem wir kompetente Beratung, persönlichen Service und ein tiefes Verständnis des lokalen Marktes bieten. Ganz gleich, ob Sie eine Immobilie kaufen, verkaufen oder vermieten möchten, wir stehen Ihnen bei jedem Schritt zur Seite.",
+    "mission_desc2":"Unser Maklerteam verfügt über umfangreiche Erfahrung und Kenntnisse in der Immobilienbranche und wir sind bestrebt, unseren Kunden den bestmöglichen Service zu bieten. Wir glauben, dass der Kauf oder Verkauf einer Immobilie eine aufregende und lohnende Erfahrung sein sollte, und wir sind bestrebt, dies für jeden einzelnen unserer Kunden Wirklichkeit werden zu lassen.",
+    "people_title":"Unsere Leute",
+    "people_desc":"Seit über 15 Jahren sind wir eine führende Persönlichkeit in der Immobilienbranche. Mit einer nachgewiesenen Erfolgsbilanz bei erfolgreichen Transaktionen und einem tiefen Verständnis des lokalen Marktes sind wir Ihr Ansprechpartner für den Kauf oder Verkauf von Immobilien.",
+    "val_title":"Unsere Werte",
+    "labe1":"Leute im Team",
+    "labe2":"Wert der verkauften Immobilie",
+    "labe3":"Benutzer auf der Plattform",
+    "continuous_title":"Fortlaufendes Lernen.",
+    "continuous_desc":"Bleiben Sie neugierig und engagieren Sie sich für lebenslanges Lernen. Bleiben Sie über die neuesten Trends und Technologien in unserem Bereich auf dem Laufenden.",
+    "learn_title":"Aus Fehlern lernen",
+    "learn_desc":"Anstatt sich mit Fehlern herumzuschlagen, nutzen Sie sie als Lerngelegenheit. Verstehen Sie, was schief gelaufen ist und wie Sie sich in Zukunft verbessern können.",
+    "customer_title":"Kundenzentrierter Ansatz.",
+    "customer_desc":"Bieten Sie Ihren Kunden außergewöhnlichen Mehrwert und Service. Verstehen Sie ihre Bedürfnisse und gehen Sie noch einen Schritt weiter, um ihre Erwartungen zu erfüllen oder zu übertreffen.",
+    "stay_title":"Bleiben Sie belastbar",
+    "stay_desc":"Nehmen Sie Herausforderungen und Rückschläge als Wachstumschancen an. Lernen Sie aus Misserfolgen und nutzen Sie sie als Sprungbrett zum Erfolg.",
+    "set_title":"Hohe Maßstäbe setzen.",
+    "set_desc":"Streben Sie bei allem, was Sie tun, nach Exzellenz. Geben Sie sich nicht mit Mittelmäßigkeit zufrieden, sondern streben Sie nach dem Besten.",
+    "embrace_title":"Umfassen Sie Innovation.",
+    "embrace_desc":"Bleiben Sie offen für neue Ideen, Technologien und Methoden. Seien Sie bereit, sich anzupassen und innovativ zu sein, um an der Spitze zu bleiben."
   },
   "createListing":{
     "header": "Erstellen Sie einen Eintrag",

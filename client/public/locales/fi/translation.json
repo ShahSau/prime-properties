@@ -9,7 +9,31 @@
     "send": "Lähettää sähköpostia"
   },
   "about":{
-    "header": "Tietoa meistä"
+    "header": "Tietoa meistä",
+    "title": "Olemme intohimoinen joukko ihmisiä, jotka työskentelevät kiinteistöalan tulevaisuuden rakentamiseksi.",
+    "title_desc":"Prime Properties on johtava kiinteistönvälitystoimisto, joka on erikoistunut auttamaan asiakkaita ostamaan, myymään ja vuokraamaan kiinteistöjä halutuimmilla alueilla. Kokeneiden agenttien tiimimme on sitoutunut tarjoamaan poikkeuksellista palvelua ja tekemään osto- ja myyntiprosessista mahdollisimman sujuvaa.",
+    "logo_title":"Olemme työskennelleet satojen upeiden ihmisten kanssa",
+    "mission_title":"Tehtävämme",
+    "mission_desc1":"Missiomme on auttaa asiakkaitamme saavuttamaan kiinteistötavoitteensa tarjoamalla asiantuntevaa neuvontaa, yksilöllistä palvelua ja syvällistä paikallisten markkinoiden ymmärtämistä. Halusitpa sitten ostaa, myydä tai vuokrata asunnon, autamme sinua kaikissa vaiheissa.",
+    "mission_desc2":"Välittäjätiimillämme on runsaasti kokemusta ja tietoa kiinteistöalalta, ja olemme sitoutuneet tarjoamaan asiakkaillemme korkeimman tason palvelua. Uskomme, että kiinteistön ostamisen tai myymisen tulee olla jännittävä ja palkitseva kokemus, ja olemme omistautuneet tekemään siitä totta jokaiselle asiakkaallemme.",
+    "people_title":"Meidän ihmiset",
+    "people_desc":"Olemme olleet merkittävä hahmo kiinteistöalalla yli 15 vuoden ajan. Todistettu kokemus onnistuneista liiketoimista ja syvällinen paikallisten markkinoiden ymmärtäminen, olemme sinun välittäjäsi kiinteistöjen ostossa tai myynnissä.",
+    "val_title":"Arvomme",
+    "labe1":"Ihmisiä joukkueessa",
+    "labe2":"Myydyn kiinteistön arvoinen",
+    "labe3":"Käyttäjät alustalla",
+    "continuous_title":"Jatkuva oppiminen.",
+    "continuous_desc":"Pysy utelias ja sitoutunut elinikäiseen oppimiseen. Pysy ajan tasalla alamme uusimmista trendeistä ja teknologioista.",
+    "learn_title":"Opi epäonnistumisista.",
+    "learn_desc":"Epäonnistumisten pohtimisen sijaan käytä niitä oppimismahdollisuuksina. Ymmärrä, mikä meni pieleen ja miten voit parantaa jatkossa.",
+    "customer_title":"Asiakaskeskeinen lähestymistapa.",
+    "customer_desc":"Tarjoa poikkeuksellista lisäarvoa ja palvelua asiakkaillesi. Ymmärrä heidän tarpeensa ja tee ylimääräinen maili täyttääksesi tai ylittääksesi heidän odotuksensa.",
+    "stay_title":"Pysy joustavana.",
+    "stay_desc":"Ota haasteet ja takaiskut kasvumahdollisuuksina. Opi epäonnistumisista ja käytä niitä ponnahduskivinä kohti menestystä.",
+    "set_title":"Aseta korkeat standardit.",
+    "set_desc":"Tavoitele erinomaisuutta kaikessa tekemässäsi. Älä tyydy keskinkertaisuuteen, vaan pyri parastaan.",
+    "embrace_title":"Omaksu innovaatio.",
+    "embrace_desc":"Pysy avoimena uusille ideoille, teknologioille ja menetelmille. Ole valmis mukautumaan ja innovoimaan pysyäksesi edellä."
   },
   "createListing":{
     "header": "Luo listaus",
