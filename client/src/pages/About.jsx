@@ -4,7 +4,9 @@ import { BsFillRocketTakeoffFill } from 'react-icons/bs'
 import { BiSolidGroup } from 'react-icons/bi'
 import { TbHandStop } from 'react-icons/tb'
 import { HiSun,HiSparkles,HiAcademicCap } from 'react-icons/hi'
-
+import { motion } from 'framer-motion'
+import Transition from '../components/Transition'
+//import { fadeIn } from '../../variants'
 const About = () => {
   const { t, i18n } = useTranslation()
 
@@ -49,24 +51,33 @@ const About = () => {
 
   return (
     <div className="bg-white">
+      <Transition />
       <main className="isolate">
         {/* Hero section */}
-        <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-10">
-          <svg aria-hidden="true" className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"><rect width="100%" height="100%" fill="url(#:R1lda:)" strokeWidth="0"></rect><svg x="50%" y="-96" strokeWidth="0" className="overflow-visible"><path transform="translate(64 160)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(128 320)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(288 480)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(512 320)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(544 640)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(320 800)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path></svg><defs><pattern id=":R1lda:" width="96" height="480" x="50%" patternUnits="userSpaceOnUse" patternTransform="translate(0 -96)" ><path d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52M-136 480h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1-18.883 320h69.766a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 109.117 160H192M-72 640h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 45.117 480h69.766a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A15.999 15.999 0 0 1 173.117 320H256M-200 320h58.883a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A16 16 0 0 1-82.883 160h69.766a16 16 0 0 0 15.69-12.862L29.427 12.862A16 16 0 0 1 45.117 0H128"></path></pattern></defs></svg>
-          <div className="mx-auto max-w-7xl px-6 py-32 sm:py-32 lg:px-8 lg:mx-0 lg:gap-x-10 lg:gap-y-6">
-            <div className="mx-auto max-w-2xl ">
-              <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
-                {t('about.title')}
-              </h1>
-              <div className="mt-6 max-w-xl lg:mt-10 xl:col-end-1 xl:row-start-1">
-                <p className="text-lg leading-8 text-gray-600">
-                  {t('about.title_desc')}
-                </p>
+        <motion.div
+          className="main__container"
+          initial={{ width: 0 }}
+          animate={{ width: '100%' }}
+          exit={{ x: '100%', opacity: 0 }}
+          transition={{ duration: 2,delay: 0.8 }}
+        >
+          <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-10">
+            <svg aria-hidden="true" className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]"><rect width="100%" height="100%" fill="url(#:R1lda:)" strokeWidth="0"></rect><svg x="50%" y="-96" strokeWidth="0" className="overflow-visible"><path transform="translate(64 160)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(128 320)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(288 480)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(512 320)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(544 640)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path><path transform="translate(320 800)" d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"></path></svg><defs><pattern id=":R1lda:" width="96" height="480" x="50%" patternUnits="userSpaceOnUse" patternTransform="translate(0 -96)" ><path d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52M-136 480h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1-18.883 320h69.766a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 109.117 160H192M-72 640h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 45.117 480h69.766a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A15.999 15.999 0 0 1 173.117 320H256M-200 320h58.883a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A16 16 0 0 1-82.883 160h69.766a16 16 0 0 0 15.69-12.862L29.427 12.862A16 16 0 0 1 45.117 0H128"></path></pattern></defs></svg>
+            <div className="mx-auto max-w-7xl px-6 py-32 sm:py-32 lg:px-8 lg:mx-0 lg:gap-x-10 lg:gap-y-6">
+              <div className="mx-auto max-w-2xl ">
+                <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
+                  {t('about.title')}
+                </h1>
+                <div className="mt-6 max-w-xl lg:mt-10 xl:col-end-1 xl:row-start-1">
+                  <p className="text-lg leading-8 text-gray-600">
+                    {t('about.title_desc')}
+                  </p>
+                </div>
               </div>
             </div>
+            <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
           </div>
-          <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
-        </div>
+        </motion.div>
 
         {/* Logo cloud */}
         <div className="mx-auto mt-12 max-w-7xl mb-12 sm:mt-10 sm:px-6 lg:px-8">
@@ -124,33 +135,42 @@ const About = () => {
         </div>
 
         {/* Content section */}
-        <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('about.mission_title')}</h2>
-            <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
-              <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
-                <p className="text-xl leading-8 text-gray-600">
-                  {t('about.mission_desc1')}
-                </p>
-                <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
-                  <p>
-                    {t('about.mission_desc2')}
+        <motion.div
+          className="main__container"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 0, opacity: 1 }}
+          transition={{ duration: 2,delay: 2,ease: [0.6, -0.05, 0.01, 0.99] }}
+        >
+          <div className="mx-auto -mt-8 max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{t('about.mission_title')}</h2>
+              <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
+                <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
+                  <p className="text-xl leading-8 text-gray-600">
+                    {t('about.mission_desc1')}
                   </p>
+                  <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
+                    <p>
+                      {t('about.mission_desc2')}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="lg:flex lg:flex-auto lg:justify-center">
-                <dl className="w-64 space-y-8 xl:w-80">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="flex flex-col-reverse gap-y-4">
-                      <dt className="text-base leading-7 text-gray-600">{stat.label}</dt>
-                      <dd className="text-5xl font-semibold tracking-tight text-gray-900">{stat.value}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <div className="lg:flex lg:flex-auto lg:justify-center">
+                  <dl className="w-64 space-y-8 xl:w-80">
+                    {stats.map((stat) => (
+                      <div key={stat.label} className="flex flex-col-reverse gap-y-4">
+                        <dt className="text-base leading-7 text-gray-600">{stat.label}</dt>
+                        <dd className="text-5xl font-semibold tracking-tight text-gray-900">{stat.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
+
 
         {/* People section */}
         <div className="mt-32 overflow-hidden sm:mt-40">
@@ -200,7 +220,7 @@ const About = () => {
 
 
         {/* Value section */}
-        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8 py-2">
           <div className="mx-auto max-w-2xl lg:mx-0 back">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('about.val_title')}</h2>
           </div>
@@ -220,6 +240,7 @@ const About = () => {
 
       </main>
     </div>
+    // </motion.main>
   )
 }
 
