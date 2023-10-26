@@ -19,6 +19,8 @@ import {
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Profile = () => {
   const fileRef = useRef(null)
@@ -52,7 +54,17 @@ const Profile = () => {
         setFilePerc(Math.round(progress))
       },
       (error) => {
-        console.log(error)
+        // console.log(error)
+        toast.error(`${error}`, {
+          position: 'bottom-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
         setFileUploadError(true)
       },
       () => {
@@ -88,6 +100,16 @@ const Profile = () => {
       dispatch(updateUserSuccess(data))
       setUpdateSuccess(true)
     } catch (error) {
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
       dispatch(updateUserFailure(error.message))
     }
   }
@@ -105,6 +127,16 @@ const Profile = () => {
       }
       dispatch(deleteUserSuccess(data))
     } catch (error) {
+      toast.error(`${error.message}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
       dispatch(deleteUserFailure(error.message))
     }
   }
@@ -121,6 +153,16 @@ const Profile = () => {
       }
       dispatch(deleteUserSuccess(data))
     } catch (error) {
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
       dispatch(deleteUserFailure())
     }
   }
@@ -132,11 +174,31 @@ const Profile = () => {
       const data = await res.json()
       if (data.success === false) {
         setShowListingsError(true)
+        toast.error('failed to get the listing', {
+          position: 'bottom-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
         return
       }
 
       setUserListings(data)
     } catch (error) {
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
       setShowListingsError(true)
     }
   }
@@ -156,10 +218,20 @@ const Profile = () => {
         prev.filter((listing) => listing._id !== listingId)
       )
     } catch (error) {
-      console.log(error.message)
+      toast.error(`${error.message}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      // console.log(error.message)
     }
   }
-  console.log(t)
+
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
@@ -179,13 +251,33 @@ const Profile = () => {
         />
         <p className='text-sm self-center'>
           {fileUploadError ? (
-            <span className='text-red-700'>
-              {t('profile.error1')}
-            </span>
+            // <span className='text-red-700'>
+            //   {t('profile.error1')}
+            // </span>
+            toast.error(`${t('profile.error1')}`, {
+              position: 'bottom-center',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            })
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
-            <span className='text-green-700'>{t('profile.success1')}</span>
+            // <span className='text-green-700'>{t('profile.success1')}</span>
+            toast.success(`${t('profile.success1')}`, {
+              position: 'bottom-center',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            })
           ) : (
             ''
           )}
@@ -232,15 +324,53 @@ const Profile = () => {
         </span>
         <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>{t('profile.signout')}</span>
       </div>
-      <p className='text-red-700 mt-5'>{error ? error : ''}</p>
+      <p className='text-red-700 mt-5'>{
+        error ?
+          toast.error(`${t('profile.success1')}`, {
+            position: 'bottom-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          }) :
+          ''
+      }</p>
       <p className='text-green-700 mt-5'>
-        {updateSuccess ? 'User is updated successfully!' : ''}
+        {updateSuccess ?
+          toast.success('User is updated successfully!', {
+            position: 'bottom-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          })
+          : ''
+        }
       </p>
       <button onClick={handleShowListings} className='text-green-700 w-full'>
         {t('profile.showListings')}
       </button>
       <p className='text-red-700 mt-5'>
-        {showListingsError ? 'Error showing listings' : ''}
+        {
+          showListingsError ?
+            toast.error('Error showing listings', {
+              position: 'bottom-center',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            })
+            : ''
+        }
       </p>
       {userListings &&
         userListings.length > 0 &&
@@ -282,6 +412,7 @@ const Profile = () => {
           </div>
         </>
       }
+      <ToastContainer />
     </div>
   )
 }

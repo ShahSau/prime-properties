@@ -9,6 +9,8 @@ import { app } from '../firebase'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function CreateListing() {
   const { t, i18n } = useTranslation()
@@ -378,9 +380,21 @@ export default function CreateListing() {
               {uploading ? 'Uploading...' : 'Upload'}
             </button>
           </div>
-          <p className='text-red-700 text-sm'>
+          {/* <p className='text-red-700 text-sm'>
             {imageUploadError && imageUploadError}
-          </p>
+          </p> */}
+          {imageUploadError   && toast.error(`${imageUploadError }`, {
+            position: 'bottom-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          })
+          }
+          <ToastContainer />
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
               <div
@@ -408,7 +422,19 @@ export default function CreateListing() {
           >
             {loading ? 'Creating...' : 'Create listing'}
           </button>
-          {error && <p className='text-red-700 text-sm'>{error}</p>}
+          {/* {error && <p className='text-red-700 text-sm'>{error}</p>} */}
+          {error  && toast.error(`${error}`, {
+            position: 'bottom-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          })
+          }
+          <ToastContainer />
         </div>
       </form>
     </main>

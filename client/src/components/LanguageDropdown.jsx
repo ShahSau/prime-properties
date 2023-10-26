@@ -12,7 +12,6 @@ const locales = {
 
 export const LanguageDropdown = () => {
   const { t, i18n } = useTranslation()
-  console.warn('i18n.resolvedLanguage',locales[i18n.resolvedLanguage])
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>

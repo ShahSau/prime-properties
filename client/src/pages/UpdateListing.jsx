@@ -8,6 +8,8 @@ import {
 import { app } from '../firebase'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user)
@@ -41,7 +43,7 @@ export default function CreateListing() {
       const res = await fetch(`/api/listing/get/${listingId}`)
       const data = await res.json()
       if (data.success === false) {
-        console.log(data.message)
+        // console.log(data.message) //
         return
       }
       setFormData(data)
@@ -374,9 +376,21 @@ export default function CreateListing() {
               {uploading ? 'Uploading...' : 'Upload'}
             </button>
           </div>
-          <p className='text-red-700 text-sm'>
+          {/* <p className='text-red-700 text-sm'>
             {imageUploadError && imageUploadError}
-          </p>
+          </p> */}
+          {
+            imageUploadError && toast.error(`${imageUploadError}`, {
+              position: 'bottom-center',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            })
+          }
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
               <div
@@ -403,9 +417,22 @@ export default function CreateListing() {
           >
             {loading ? 'Updating...' : 'Update listing'}
           </button>
-          {error && <p className='text-red-700 text-sm'>{error}</p>}
+          {/* {error && <p className='text-red-700 text-sm'>{error}</p>} */}
+          {
+            error && toast.error(`${error}`, {
+              position: 'bottom-center',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            })
+          }
         </div>
       </form>
+      <ToastContainer />
     </main>
   )
 }

@@ -7,6 +7,9 @@ import {
   signInFailure,
 } from '../redux/user/userSlice'
 import OAuth from '../components/OAuth'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const SignIn = () => {
   const [formData, setFormData] = useState({})
   const { loading, error } = useSelector((state) => state.user)
@@ -38,6 +41,16 @@ const SignIn = () => {
       dispatch(signInSuccess(data))
       navigate('/')
     } catch (error) {
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
       dispatch(signInFailure(error.message))
     }
   }
@@ -75,7 +88,18 @@ const SignIn = () => {
               Sign up
         </Link>
       </p>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      {error  && toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      }
+      <ToastContainer />
     </div>
   )
 }

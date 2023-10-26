@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import OAuth from '../components/OAuth'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const SignUp = () => {
   const [formData, setFormData] = useState({})
   const [error, setError] = useState(null)
@@ -78,7 +81,19 @@ const SignUp = () => {
           <span className='text-blue-700'>Sign in</span>
         </Link>
       </div>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      {/* {error && <p className='text-red-500 mt-5'>{error}</p>} */}
+      {error &&
+      toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })}
+      <ToastContainer />
     </div>
   )
 }
