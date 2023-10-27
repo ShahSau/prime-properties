@@ -62,7 +62,8 @@
   "header":{
     "home": "Koti",
     "about": "Tietoa meistä",
-    "signin": "Kirjaudu sisään"
+    "signin": "Kirjaudu sisään",
+    "signout": "Kirjaudu ulos"
   },
   "profile":{
     "title": "Profiili",

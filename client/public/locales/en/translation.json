@@ -62,7 +62,8 @@
   "header":{
     "home": "Home",
     "about": "About",
-    "signin": "Sign In"
+    "signin": "Sign In",
+    "signout": "Sign Out"
   },
   "profile":{
     "title": "Profile",

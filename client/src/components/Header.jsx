@@ -1,10 +1,18 @@
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch,FaSignOutAlt } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import {  useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import LanguageDropdown from './LanguageDropdown'
 import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
+import {
+  deleteUserFailure,
+  deleteUserSuccess,
+  signOutUserStart,
+} from '../redux/user/userSlice'
+
 export default function Header() {
+  const dispatch = useDispatch()
   const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)
   const [searchTerm, setSearchTerm] = useState('')
@@ -25,6 +33,23 @@ export default function Header() {
     }
   }, [location.search])
 
+  const handleSignOut = async () => {
+
+    try {
+      dispatch(signOutUserStart())
+      const res = await fetch('/api/auth/signout')
+      const data = await res.json()
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message))
+        return
+      }
+      dispatch(deleteUserSuccess(data))
+    } catch (error) {
+      // setFetchError(error.message)
+
+      dispatch(deleteUserFailure())
+    }
+  }
 
   return (
     <header className='bg-slate-200 shadow-md'>
@@ -69,6 +94,11 @@ export default function Header() {
             )}
           </Link>
           <LanguageDropdown />
+          {currentUser ? (
+            <FaSignOutAlt onClick={handleSignOut} className='text-red-700 cursor-pointer text-2xl'/>
+          ) : (
+            ''
+          )}
         </ul>
       </div>
     </header>
