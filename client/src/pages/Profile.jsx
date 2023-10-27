@@ -16,11 +16,14 @@ import {
   deleteUserSuccess,
   signOutUserStart,
 } from '../redux/user/userSlice'
+import ListingItem from '../components/ListingItem'
+
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ItemListing from '../components/ItemListing'
 
 const Profile = () => {
   const fileRef = useRef(null)
@@ -154,44 +157,117 @@ const Profile = () => {
   }
 
   const handleListingDelete = async (listingId) => {
-    try {
-      const res = await fetch(`/api/listing/delete/${listingId}`, {
-        method: 'DELETE',
-      })
-      const data = await res.json()
-      if (data.success === false) {
-        console.log(data.message)
-        return
-      }
+    // try {
+    //   const res = await fetch(`/api/listing/delete/${listingId}`, {
+    //     method: 'DELETE',
+    //   })
+    //   const data = await res.json()
+    //   if (data.success === false) {
+    //     console.log(data.message)
+    //     return
+    //   }
 
-      setUserListings((prev) =>
-        prev.filter((listing) => listing._id !== listingId)
-      )
-    } catch (error) {
-      setFetchError(error.message)
-    }
+    //   setUserListings((prev) =>
+    //     prev.filter((listing) => listing._id !== listingId)
+    //   )
+    // } catch (error) {
+    //   setFetchError(error.message)
+    // }
+    console.log('delete', listingId)
   }
 
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className=''>
       <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
-      <form  onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <input
-          onChange={(e) => setFile(e.target.files[0])}
-          type='file'
-          ref={fileRef}
-          hidden
-          accept='image/*'
-        />
-        <img
-          onClick={() => fileRef.current.click()}
-          src={formData.avatar || currentUser.avatar}
-          alt='profile'
-          className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
-        />
-        <p className='text-sm self-center'>
-          {fileUploadError ? (
-            toast.error(`${t('profile.error1')}`, {
+      <div className='p-3 max-w-lg mx-auto'>
+        <form  onSubmit={handleSubmit} className='flex flex-col gap-4 '>
+          <input
+            onChange={(e) => setFile(e.target.files[0])}
+            type='file'
+            ref={fileRef}
+            hidden
+            accept='image/*'
+          />
+          <img
+            onClick={() => fileRef.current.click()}
+            src={formData.avatar || currentUser.avatar}
+            alt='profile'
+            className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
+          />
+          <p className='text-sm self-center'>
+            {fileUploadError ? (
+              toast.error(`${t('profile.error1')}`, {
+                position: 'bottom-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+              })
+            ) : filePerc > 0 && filePerc < 100 ? (
+              <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
+            ) : filePerc === 100 ? (
+              toast.success(`${t('profile.success1')}`, {
+                position: 'bottom-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+              })
+            ) : (
+              ''
+            )}
+          </p>
+          <input
+            type='text'
+            placeholder='username'
+            defaultValue={currentUser.username}
+            id='username'
+            className='border p-3 rounded-lg'
+            onChange={handleChange}
+          />
+          <input
+            type='email'
+            placeholder='email'
+            id='email'
+            className='border p-3 rounded-lg'
+            defaultValue={currentUser.email}
+            onChange={handleChange}
+          />
+          <input
+            type='password'
+            placeholder='password'
+            id='password'
+            className='border p-3 rounded-lg'
+            onChange={handleChange}
+          />
+          <button
+            disabled={loading}
+            className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
+          >
+            {loading ? t('profile.loading') : t('profile.update')}
+          </button>
+          <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={'/create-listing'}>
+            {t('profile.createListing')}
+          </Link>
+        </form>
+        <div className="flex justify-between mt-5">
+          <span
+            onClick={handleDeleteUser}
+            className='text-red-700 cursor-pointer'
+          >
+            {t('profile.deleteAccount')}
+          </span>
+          <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>{t('profile.signout')}</span>
+        </div>
+        <p className='text-red-700 mt-5'>{
+          error ?
+            toast.error(`${t('profile.success1')}`, {
               position: 'bottom-center',
               autoClose: 2000,
               hideProgressBar: false,
@@ -200,102 +276,12 @@ const Profile = () => {
               draggable: true,
               progress: undefined,
               theme: 'light',
-            })
-          ) : filePerc > 0 && filePerc < 100 ? (
-            <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
-          ) : filePerc === 100 ? (
-            toast.success(`${t('profile.success1')}`, {
-              position: 'bottom-center',
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: 'light',
-            })
-          ) : (
+            }) :
             ''
-          )}
-        </p>
-        <input
-          type='text'
-          placeholder='username'
-          defaultValue={currentUser.username}
-          id='username'
-          className='border p-3 rounded-lg'
-          onChange={handleChange}
-        />
-        <input
-          type='email'
-          placeholder='email'
-          id='email'
-          className='border p-3 rounded-lg'
-          defaultValue={currentUser.email}
-          onChange={handleChange}
-        />
-        <input
-          type='password'
-          placeholder='password'
-          id='password'
-          className='border p-3 rounded-lg'
-          onChange={handleChange}
-        />
-        <button
-          disabled={loading}
-          className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
-        >
-          {loading ? t('profile.loading') : t('profile.update')}
-        </button>
-        <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={'/create-listing'}>
-          {t('profile.createListing')}
-        </Link>
-      </form>
-      <div className="flex justify-between mt-5">
-        <span
-          onClick={handleDeleteUser}
-          className='text-red-700 cursor-pointer'
-        >
-          {t('profile.deleteAccount')}
-        </span>
-        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>{t('profile.signout')}</span>
-      </div>
-      <p className='text-red-700 mt-5'>{
-        error ?
-          toast.error(`${t('profile.success1')}`, {
-            position: 'bottom-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          }) :
-          ''
-      }</p>
-      <p className='text-green-700 mt-5'>
-        {updateSuccess ?
-          toast.success('User is updated successfully!', {
-            position: 'bottom-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          })
-          : ''
-        }
-      </p>
-      <button onClick={handleShowListings} className='text-green-700 w-full'>
-        {t('profile.showListings')}
-      </button>
-      <p className='text-red-700 mt-5'>
-        {
-          showListingsError ?
-            toast.error('Error showing listings', {
+        }</p>
+        <p className='text-green-700 mt-5'>
+          {updateSuccess ?
+            toast.success('User is updated successfully!', {
               position: 'bottom-center',
               autoClose: 2000,
               hideProgressBar: false,
@@ -306,44 +292,37 @@ const Profile = () => {
               theme: 'light',
             })
             : ''
-        }
-      </p>
+          }
+        </p>
+        <button onClick={handleShowListings} className='text-green-700 w-full'>
+          {t('profile.showListings')}
+        </button>
+        <p className='text-red-700 mt-5'>
+          {
+            showListingsError ?
+              toast.error('Error showing listings', {
+                position: 'bottom-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+              })
+              : ''
+          }
+        </p>
+      </div>
       {userListings &&
         userListings.length > 0 &&
         <>
-          <div className="flex flex-col gap-4">
-            <h1 className='text-center mt-7 text-2xl font-semibold'>{t('profile.yourListings')}</h1>
+          <div className='flex flex-wrap gap-4 p-6'>
             {userListings.map((listing) => (
-              <div
-                key={listing._id}
-                className='border rounded-lg p-3 flex justify-between items-center gap-4'
-              >
-                <Link to={`/listing/${listing._id}`}>
-                  <img
-                    src={listing.imageUrls[0]}
-                    alt='listing cover'
-                    className='h-16 w-16 object-contain'
-                  />
-                </Link>
-                <Link
-                  className='text-slate-700 font-semibold  hover:underline truncate flex-1'
-                  to={`/listing/${listing._id}`}
-                >
-                  <p>{listing.name}</p>
-                </Link>
-
-                <div className='flex flex-col item-center'>
-                  <button
-                    onClick={() => handleListingDelete(listing._id)}
-                    className='text-red-700 uppercase'
-                  >
-                    {t('profile.delete')}
-                  </button>
-                  <Link to={`/update-listing/${listing._id}`}>
-                    <button className='text-green-700 uppercase'>{t('profile.edit')}</button>
-                  </Link>
-                </div>
-              </div>
+              <ItemListing
+                listing={listing} key={listing._id}
+                onDelete={() => handleListingDelete(listing._id)}
+              />
             ))}
           </div>
         </>
