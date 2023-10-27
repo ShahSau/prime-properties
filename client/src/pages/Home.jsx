@@ -14,6 +14,7 @@ const Home = () => {
   const [offerListings, setOfferListings] = useState([])
   const [saleListings, setSaleListings] = useState([])
   const [rentListings, setRentListings] = useState([])
+  const [error, setError] = useState(null)
   SwiperCore.use([Navigation])
   useEffect(() => {
     const fetchOfferListings = async () => {
@@ -23,17 +24,7 @@ const Home = () => {
         setOfferListings(data)
         fetchRentListings()
       } catch (error) {
-        // console.log(error)
-        toast.error(`${error}`, {
-          position: 'bottom-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+        setError(error)
       }
     }
     const fetchRentListings = async () => {
@@ -43,17 +34,8 @@ const Home = () => {
         setRentListings(data)
         fetchSaleListings()
       } catch (error) {
-        // console.log(error)
-        toast.error(`${error}`, {
-          position: 'bottom-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+        setError(error)
+
       }
     }
 
@@ -63,17 +45,7 @@ const Home = () => {
         const data = await res.json()
         setSaleListings(data)
       } catch (error) {
-        // console.log(error)
-        toast.error(`${error}`, {
-          position: 'bottom-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+        setError(error)
       }
     }
     fetchOfferListings()
@@ -163,6 +135,18 @@ const Home = () => {
           </div>
         )}
       </div>
+      {error &&
+        toast.error(`${error}`, {
+          position: 'bottom-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
       <ToastContainer />
     </div>
   )

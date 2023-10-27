@@ -37,10 +37,10 @@ export default function CreateListing() {
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
-  // console.log(formData);
+
 
   const handleImageSubmit = (e) => {
-    //e.preventDefault();
+
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true)
       setImageUploadError(false)
@@ -318,20 +318,6 @@ export default function CreateListing() {
                 )}
               </div>
             </div>
-            {/* <div className='flex items-center gap-2'>
-              <input
-                type='number'
-                id='discountPrice'
-                // min='500'
-                // max='1000'
-                required
-                className='p-3 border border-gray-300 rounded-lg'
-              />
-              <div className='flex flex-col items-center'>
-                <p>Discounted price</p>
-                <span className='text-xs'>($ / month)</span>
-              </div>
-            </div> */}
             {formData.offer && (
               <div className='flex items-center gap-2'>
                 <input
@@ -358,10 +344,6 @@ export default function CreateListing() {
           <p className='font-semibold'>{t('createListing.images')}
             <span className='font-normal text-gray-600 ml-2'>{t('createListing.img_desc')}</span>
           </p>
-          {/* <div className="flex gap-4">
-            <input className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/*' multiple />
-            <button className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'>Upload</button>
-          </div> */}
           <div className='flex gap-4'>
             <input
               onChange={(e) => setFiles(e.target.files)}
@@ -380,9 +362,6 @@ export default function CreateListing() {
               {uploading ? 'Uploading...' : 'Upload'}
             </button>
           </div>
-          {/* <p className='text-red-700 text-sm'>
-            {imageUploadError && imageUploadError}
-          </p> */}
           {imageUploadError   && toast.error(`${imageUploadError }`, {
             position: 'bottom-center',
             autoClose: 2000,
@@ -394,7 +373,6 @@ export default function CreateListing() {
             theme: 'light',
           })
           }
-          <ToastContainer />
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
               <div
@@ -415,14 +393,14 @@ export default function CreateListing() {
                 </button>
               </div>
             ))}
-          {/* <button className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>Create Listing</button> */}
+
           <button
             disabled={loading || uploading}
             className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
           >
             {loading ? 'Creating...' : 'Create listing'}
           </button>
-          {/* {error && <p className='text-red-700 text-sm'>{error}</p>} */}
+
           {error  && toast.error(`${error}`, {
             position: 'bottom-center',
             autoClose: 2000,

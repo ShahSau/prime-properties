@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const SignIn = () => {
   const [formData, setFormData] = useState({})
+  const [fetcherror, setFetchError] = useState(null)
   const { loading, error } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -41,16 +42,7 @@ const SignIn = () => {
       dispatch(signInSuccess(data))
       navigate('/')
     } catch (error) {
-      toast.error(`${error}`, {
-        position: 'bottom-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+      setFetchError(error)
       dispatch(signInFailure(error.message))
     }
   }
@@ -88,6 +80,17 @@ const SignIn = () => {
               Sign up
         </Link>
       </p>
+      {fetcherror && toast.error(`${fetcherror}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      }
       {error  && toast.error(`${error}`, {
         position: 'bottom-center',
         autoClose: 2000,

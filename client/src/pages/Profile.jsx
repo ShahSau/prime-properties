@@ -32,6 +32,8 @@ const Profile = () => {
   const [updateSuccess, setUpdateSuccess] = useState(false)
   const [showListingsError, setShowListingsError] = useState(false)
   const [userListings, setUserListings] = useState([])
+  const [ fetcherror, setFetchError] = useState(null)
+
   const dispatch = useDispatch()
   const { t, i18n } = useTranslation()
   useEffect(() => {
@@ -54,17 +56,6 @@ const Profile = () => {
         setFilePerc(Math.round(progress))
       },
       (error) => {
-        // console.log(error)
-        toast.error(`${error}`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
         setFileUploadError(true)
       },
       () => {
@@ -94,22 +85,15 @@ const Profile = () => {
       const data = await res.json()
       if (data.success === false) {
         dispatch(updateUserFailure(data.message))
+        setFetchError(data.message)
         return
       }
 
       dispatch(updateUserSuccess(data))
       setUpdateSuccess(true)
     } catch (error) {
-      toast.error(`${error}`, {
-        position: 'bottom-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+      setFetchError(error.message)
+
       dispatch(updateUserFailure(error.message))
     }
   }
@@ -127,16 +111,8 @@ const Profile = () => {
       }
       dispatch(deleteUserSuccess(data))
     } catch (error) {
-      toast.error(`${error.message}`, {
-        position: 'bottom-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+      setFetchError(error.message)
+
       dispatch(deleteUserFailure(error.message))
     }
   }
@@ -153,16 +129,8 @@ const Profile = () => {
       }
       dispatch(deleteUserSuccess(data))
     } catch (error) {
-      toast.error(`${error}`, {
-        position: 'bottom-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+      setFetchError(error.message)
+
       dispatch(deleteUserFailure())
     }
   }
@@ -174,31 +142,13 @@ const Profile = () => {
       const data = await res.json()
       if (data.success === false) {
         setShowListingsError(true)
-        toast.error('failed to get the listing', {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+
         return
       }
 
       setUserListings(data)
     } catch (error) {
-      toast.error(`${error}`, {
-        position: 'bottom-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
+
       setShowListingsError(true)
     }
   }
@@ -218,17 +168,7 @@ const Profile = () => {
         prev.filter((listing) => listing._id !== listingId)
       )
     } catch (error) {
-      toast.error(`${error.message}`, {
-        position: 'bottom-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
-      // console.log(error.message)
+      setFetchError(error.message)
     }
   }
 
@@ -251,9 +191,6 @@ const Profile = () => {
         />
         <p className='text-sm self-center'>
           {fileUploadError ? (
-            // <span className='text-red-700'>
-            //   {t('profile.error1')}
-            // </span>
             toast.error(`${t('profile.error1')}`, {
               position: 'bottom-center',
               autoClose: 2000,
@@ -267,7 +204,6 @@ const Profile = () => {
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
-            // <span className='text-green-700'>{t('profile.success1')}</span>
             toast.success(`${t('profile.success1')}`, {
               position: 'bottom-center',
               autoClose: 2000,

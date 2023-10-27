@@ -2,7 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ListingItem from '../components/ListingItem'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 export default function Search() {
   const navigate = useNavigate()
   const [sidebardata, setSidebardata] = useState({
@@ -17,7 +18,7 @@ export default function Search() {
 
   const [loading, setLoading] = useState(false)
   const [listings, setListings] = useState([])
-  // console.log(listings)
+  const [error, setError] = useState(null)
   const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
@@ -51,14 +52,19 @@ export default function Search() {
     }
 
     const fetchListings = async () => {
-      setLoading(true)
-      setShowMore(false)
-      const searchQuery = urlParams.toString()
-      const res = await fetch(`/api/listing/get?${searchQuery}`)
-      const data = await res.json()
-      data.length > 10 ? setShowMore(true) : setShowMore(false)
-      setListings(data)
-      setLoading(false)
+      try {
+        setLoading(true)
+        setShowMore(false)
+        const searchQuery = urlParams.toString()
+        const res = await fetch(`/api/listing/get?${searchQuery}`)
+        const data = await res.json()
+        data.length > 10 ? setShowMore(true) : setShowMore(false)
+        setListings(data)
+        setLoading(false)
+      } catch (error) {
+        setError(error)
+        setLoading(false)
+      }
     }
 
     fetchListings()
@@ -248,6 +254,19 @@ export default function Search() {
           )}
         </div>
       </div>
+      {error &&
+        toast.error(`${error}`, {
+          position: 'bottom-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
+      <ToastContainer />
     </div>
   )
 }

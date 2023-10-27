@@ -8,6 +8,8 @@ export default function Contact({ listing }) {
 
   const [landlord, setLandlord] = useState(null)
   const [message, setMessage] = useState('')
+  const [error, setError] = useState(null)
+
   const onChange = (e) => {
     setMessage(e.target.value)
   }
@@ -19,17 +21,7 @@ export default function Contact({ listing }) {
         const data = await res.json()
         setLandlord(data)
       } catch (error) {
-        // console.log(error)
-        toast.error(`${error}`, {
-          position: 'bottom-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+        setError(error)
       }
     }
     fetchLandlord()
@@ -49,6 +41,18 @@ export default function Contact({ listing }) {
           >
             {t('contact.send')}
           </Link>
+          { error  &&
+             toast.error(`${error}`, {
+               position: 'bottom-center',
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: 'light',
+             })
+          }
           <ToastContainer />
         </div>
       )}

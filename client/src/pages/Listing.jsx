@@ -17,6 +17,8 @@ import {
 import { BiArea } from 'react-icons/bi'
 import Contact from '../components/Contact'
 import { useTranslation } from 'react-i18next'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Listing() {
   const { t, i18n } = useTranslation()
@@ -152,6 +154,19 @@ export default function Listing() {
               </button>
             )}
             {contact && <Contact listing={listing}/>}
+            {error &&
+              toast.error(`${error}`, {
+                position: 'bottom-center',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+              })
+            }
+            <ToastContainer />
           </div>
         </div>
       )}

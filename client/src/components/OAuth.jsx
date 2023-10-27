@@ -1,11 +1,15 @@
+import { useState } from 'react'
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 import { app } from '../firebase'
 import { useDispatch } from 'react-redux'
 import { signInSuccess } from '../redux/user/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function OAuth() {
+  const [error, setError] = useState(null)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -32,7 +36,8 @@ export default function OAuth() {
       dispatch(signInSuccess(data))
       navigate('/')
     } catch (error) {
-      console.log('could not sign in with google', error)
+      // console.log('could not sign in with google', error)
+      setError('could not sign in with google' + error)
     }
   }
 
@@ -55,6 +60,19 @@ export default function OAuth() {
           <span className="text-sm font-semibold leading-6">Google</span>
         </button>
       </div>
+      {error &&
+        toast.error(`${error}`, {
+          position: 'bottom-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
+      <ToastContainer />
     </div>
   )
 }
