@@ -16,8 +16,8 @@ import {
   deleteUserSuccess,
   signOutUserStart,
 } from '../redux/user/userSlice'
-import ListingItem from '../components/ListingItem'
-
+import { FaSignOutAlt } from 'react-icons/fa'
+import { AiOutlineUserDelete } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -157,23 +157,23 @@ const Profile = () => {
   }
 
   const handleListingDelete = async (listingId) => {
-    // try {
-    //   const res = await fetch(`/api/listing/delete/${listingId}`, {
-    //     method: 'DELETE',
-    //   })
-    //   const data = await res.json()
-    //   if (data.success === false) {
-    //     console.log(data.message)
-    //     return
-    //   }
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: 'DELETE',
+      })
+      const data = await res.json()
+      if (data.success === false) {
+        console.log(data.message)
+        return
+      }
 
-    //   setUserListings((prev) =>
-    //     prev.filter((listing) => listing._id !== listingId)
-    //   )
-    // } catch (error) {
-    //   setFetchError(error.message)
-    // }
-    console.log('delete', listingId)
+      setUserListings((prev) =>
+        prev.filter((listing) => listing._id !== listingId)
+      )
+    } catch (error) {
+      setFetchError(error.message)
+    }
+
   }
 
   return (
@@ -257,13 +257,22 @@ const Profile = () => {
           </Link>
         </form>
         <div className="flex justify-between mt-5">
-          <span
+          {/* <span
             onClick={handleDeleteUser}
             className='text-red-700 cursor-pointer'
           >
             {t('profile.deleteAccount')}
-          </span>
-          <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>{t('profile.signout')}</span>
+          </span> */}
+          <div className="group flex relative">
+            <AiOutlineUserDelete onClick={handleDeleteUser} className='text-red-700 cursor-pointer text-3xl'/>
+            <span className="group-hover:opacity-100 transition-opacity bg-red-500 px-4 text-sm text-gray-100 rounded-md absolute left-1/2
+                -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto">{t('profile.deleteAccount')}</span>
+          </div>
+          <div className="group flex relative">
+            <FaSignOutAlt onClick={handleSignOut} className='text-red-700 cursor-pointer text-2xl'/>
+            <span className="group-hover:opacity-100 transition-opacity bg-red-500 px-4 text-sm text-gray-100 rounded-md absolute left-1/2
+                -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto">{t('profile.signout')}</span>
+          </div>
         </div>
         <p className='text-red-700 mt-5'>{
           error ?
