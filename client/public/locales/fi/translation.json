@@ -76,6 +76,12 @@
     "showListings": "Näytä listaukset",
     "yourListings": "Sinun listaukset",
     "delete": "Poista",
-    "edit": "Muokkaa"
+    "edit": "Muokkaa",
+    "username": "Käyttäjänimi",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "del_text":"Kun olet poistanut tilisi, paluuta ei ole. Ole varma.",
+    "del_acc":"poista tilisi",
+    "profile_pic":"Profiilikuva"
   }
 }

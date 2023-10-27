@@ -76,6 +76,12 @@
     "showListings": "Show My Listings",
     "yourListings": "Your Listings",
     "delete": "Delete",
-    "edit": "Edit"
+    "edit": "Edit",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "del_text":"Once you delete your account, there is no going back. Please be certain.",
+    "del_acc":"Delete Your Account",
+    "profile_pic":"Profile Picture"
   }
 }

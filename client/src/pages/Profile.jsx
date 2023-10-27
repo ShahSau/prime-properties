@@ -177,168 +177,167 @@ const Profile = () => {
   }
 
   return (
-    <div className=''>
+    <div>
       <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
-      <div className='p-3 max-w-lg mx-auto'>
-        <form  onSubmit={handleSubmit} className='flex flex-col gap-4 '>
-          <input
-            onChange={(e) => setFile(e.target.files[0])}
-            type='file'
-            ref={fileRef}
-            hidden
-            accept='image/*'
-          />
-          <img
-            onClick={() => fileRef.current.click()}
-            src={formData.avatar || currentUser.avatar}
-            alt='profile'
-            className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
-          />
-          <p className='text-sm self-center'>
-            {fileUploadError ? (
-              toast.error(`${t('profile.error1')}`, {
-                position: 'bottom-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-              })
-            ) : filePerc > 0 && filePerc < 100 ? (
-              <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
-            ) : filePerc === 100 ? (
-              toast.success(`${t('profile.success1')}`, {
-                position: 'bottom-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-              })
-            ) : (
-              ''
-            )}
-          </p>
-          <input
-            type='text'
-            placeholder='username'
-            defaultValue={currentUser.username}
-            id='username'
-            className='border p-3 rounded-lg'
-            onChange={handleChange}
-          />
-          <input
-            type='email'
-            placeholder='email'
-            id='email'
-            className='border p-3 rounded-lg'
-            defaultValue={currentUser.email}
-            onChange={handleChange}
-          />
-          <input
-            type='password'
-            placeholder='password'
-            id='password'
-            className='border p-3 rounded-lg'
-            onChange={handleChange}
-          />
-          <button
-            disabled={loading}
-            className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
-          >
-            {loading ? t('profile.loading') : t('profile.update')}
-          </button>
-          <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' to={'/create-listing'}>
-            {t('profile.createListing')}
-          </Link>
-        </form>
-        <div className="flex justify-between mt-5">
-          {/* <span
-            onClick={handleDeleteUser}
-            className='text-red-700 cursor-pointer'
-          >
-            {t('profile.deleteAccount')}
-          </span> */}
-          <div className="group flex relative">
-            <AiOutlineUserDelete onClick={handleDeleteUser} className='text-red-700 cursor-pointer text-3xl'/>
-            <span className="group-hover:opacity-100 transition-opacity bg-red-500 px-4 text-sm text-gray-100 rounded-md absolute left-1/2
-                -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto">{t('profile.deleteAccount')}</span>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4 '>
+        <div className="space-y-12">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
+            <div className='p-6 flex-cols flex-1 '>
+              <p className='text-2xl'>{t('profile.profile_pic')}</p>
+              <input
+                onChange={(e) => setFile(e.target.files[0])}
+                type='file'
+                ref={fileRef}
+                hidden
+                accept='image/*'
+              />
+              <img
+                onClick={() => fileRef.current.click()}
+                src={formData.avatar || currentUser.avatar}
+                alt='profile'
+                className='rounded-full h-40 w-40 object-cover cursor-pointer text-center mt-2'
+              />
+              <p className='text-sm self-center'>
+                {fileUploadError ? (
+                  toast.error(`${t('profile.error1')}`, {
+                    position: 'bottom-center',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                  })
+                ) : filePerc > 0 && filePerc < 100 ? (
+                  <span className='text-slate-700'>{`Uploading ${filePerc}%`}</span>
+                ) : filePerc === 100 ? (
+                  toast.success(`${t('profile.success1')}`, {
+                    position: 'bottom-center',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                  })
+                ) : (
+                  ''
+                )}
+              </p>
+            </div>
+
+            <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2 ">
+              {/*username*/}
+              <div className="sm:col-span-4">
+                <label htmlFor="website" className="block text-sm font-medium leading-6 text-gray-900">
+                  {t('profile.username')}
+                </label>
+                <div className="mt-2">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <input
+                      type='text'
+                      placeholder='username'
+                      defaultValue={currentUser.username}
+                      id='username'
+                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      onChange={handleChange}
+                    />
+
+                  </div>
+                </div>
+              </div>
+
+              {/*email*/}
+              <div className="sm:col-span-4">
+                <label htmlFor="website" className="block text-sm font-medium leading-6 text-gray-900">
+                  {t('profile.email')}
+                </label>
+                <div className="mt-2">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <input
+                      type='email'
+                      placeholder='email'
+                      id='email'
+                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      defaultValue={currentUser.email}
+                      onChange={handleChange}
+                    />
+
+                  </div>
+                </div>
+              </div>
+
+              {/*password*/}
+              <div className="sm:col-span-4">
+                <label htmlFor="website" className="block text-sm font-medium leading-6 text-gray-900">
+                  {t('profile.password')}
+                </label>
+                <div className="mt-2">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <input
+                      type='password'
+                      placeholder='password'
+                      id='password'
+                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="group flex relative">
-            <FaSignOutAlt onClick={handleSignOut} className='text-red-700 cursor-pointer text-2xl'/>
-            <span className="group-hover:opacity-100 transition-opacity bg-red-500 px-4 text-sm text-gray-100 rounded-md absolute left-1/2
-                -translate-x-1/2 translate-y-full opacity-0 m-4 mx-auto">{t('profile.signout')}</span>
+
+          {/** */}
+          <div className="mt-3 flex items-center justify-end gap-x-6 mr-4">
+            <button
+              disabled={loading}
+              className="rounded-md bg-indigo-600 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              {loading ? t('profile.loading') : t('profile.update')}
+            </button>
           </div>
         </div>
-        <p className='text-red-700 mt-5'>{
-          error ?
-            toast.error(`${t('profile.success1')}`, {
-              position: 'bottom-center',
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: 'light',
-            }) :
-            ''
-        }</p>
-        <p className='text-green-700 mt-5'>
-          {updateSuccess ?
-            toast.success('User is updated successfully!', {
-              position: 'bottom-center',
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: 'light',
-            })
-            : ''
-          }
-        </p>
-        <button onClick={handleShowListings} className='text-green-700 w-full'>
+      </form>
+
+      {/* Delete user */}
+      <div className="mx-auto mt-6 max-w-7xl mb-12 sm:mt-10 sm:px-6 lg:px-8">
+        <div className="relative isolate overflow-hidden  px-6 py-10 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+          <h2 className="mx-auto max-w-2xl text-2xl font-bold tracking-tight sm:text-2xl">
+            {t('profile.del_text')}
+          </h2>
+          <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6'>
+            <button onClick={handleDeleteUser} className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md">
+              {t('profile.del_acc')}
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+        <button onClick={handleShowListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
           {t('profile.showListings')}
         </button>
-        <p className='text-red-700 mt-5'>
-          {
-            showListingsError ?
-              toast.error('Error showing listings', {
-                position: 'bottom-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-              })
-              : ''
-          }
-        </p>
       </div>
       {userListings &&
-        userListings.length > 0 &&
-        <>
-          <div className='flex flex-wrap gap-4 p-6'>
-            {userListings.map((listing) => (
-              <ItemListing
-                listing={listing} key={listing._id}
-                onDelete={() => handleListingDelete(listing._id)}
-              />
-            ))}
-          </div>
-        </>
+         userListings.length > 0 &&
+         <>
+           <div className='flex flex-wrap gap-4 p-6'>
+             {userListings.map((listing) => (
+               <ItemListing
+                 listing={listing} key={listing._id}
+                 onDelete={() => handleListingDelete(listing._id)}
+               />
+             ))}
+           </div>
+         </>
       }
       <ToastContainer />
+
     </div>
   )
 }
+
 
 export default Profile

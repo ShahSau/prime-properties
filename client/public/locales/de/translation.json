@@ -76,6 +76,12 @@
     "showListings": "Listings anzeigen",
     "yourListings": "Ihre Listings",
     "delete": "Löschen",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "username": "Nutzername",
+    "email": "Email",
+    "password": "Passwort",
+    "del_text":"Sobald Sie Ihr Konto gelöscht haben, gibt es kein Zurück mehr. Bitte seien Sie sicher.",
+    "del_acc":"Lösche deinen Account",
+    "profile_pic":"Profilbild"
   }
 }
