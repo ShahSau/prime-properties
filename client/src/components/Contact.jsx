@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 export default function Contact({ listing }) {
   const { t, i18n } = useTranslation()
 
   const [landlord, setLandlord] = useState(null)
   const [message, setMessage] = useState('')
+  const [error, setError] = useState(null)
+
   const onChange = (e) => {
     setMessage(e.target.value)
   }
@@ -17,7 +21,7 @@ export default function Contact({ listing }) {
         const data = await res.json()
         setLandlord(data)
       } catch (error) {
-        console.log(error)
+        setError(error)
       }
     }
     fetchLandlord()
@@ -37,6 +41,19 @@ export default function Contact({ listing }) {
           >
             {t('contact.send')}
           </Link>
+          { error  &&
+             toast.error(`${error}`, {
+               position: 'bottom-center',
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: 'light',
+             })
+          }
+          <ToastContainer />
         </div>
       )}
     </>

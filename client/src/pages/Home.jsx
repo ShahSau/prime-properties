@@ -6,13 +6,16 @@ import { Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper'
 import 'swiper/css/bundle'
 import ListingItem from '../components/ListingItem'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const Home = () => {
   const { t, i18n } = useTranslation()
   const [offerListings, setOfferListings] = useState([])
   const [saleListings, setSaleListings] = useState([])
   const [rentListings, setRentListings] = useState([])
+  const [error, setError] = useState(null)
   SwiperCore.use([Navigation])
-  console.log(offerListings)
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
@@ -21,7 +24,7 @@ const Home = () => {
         setOfferListings(data)
         fetchRentListings()
       } catch (error) {
-        console.log(error)
+        setError(error)
       }
     }
     const fetchRentListings = async () => {
@@ -31,7 +34,8 @@ const Home = () => {
         setRentListings(data)
         fetchSaleListings()
       } catch (error) {
-        console.log(error)
+        setError(error)
+
       }
     }
 
@@ -41,7 +45,7 @@ const Home = () => {
         const data = await res.json()
         setSaleListings(data)
       } catch (error) {
-        console.log(error)
+        setError(error)
       }
     }
     fetchOfferListings()
@@ -131,6 +135,19 @@ const Home = () => {
           </div>
         )}
       </div>
+      {error &&
+        toast.error(`${error}`, {
+          position: 'bottom-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      }
+      <ToastContainer />
     </div>
   )
 }

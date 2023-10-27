@@ -7,8 +7,12 @@ import {
   signInFailure,
 } from '../redux/user/userSlice'
 import OAuth from '../components/OAuth'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const SignIn = () => {
   const [formData, setFormData] = useState({})
+  const [fetcherror, setFetchError] = useState(null)
   const { loading, error } = useSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -38,6 +42,7 @@ const SignIn = () => {
       dispatch(signInSuccess(data))
       navigate('/')
     } catch (error) {
+      setFetchError(error)
       dispatch(signInFailure(error.message))
     }
   }
@@ -75,7 +80,29 @@ const SignIn = () => {
               Sign up
         </Link>
       </p>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      {fetcherror && toast.error(`${fetcherror}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      }
+      {error  && toast.error(`${error}`, {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+      }
+      <ToastContainer />
     </div>
   )
 }
