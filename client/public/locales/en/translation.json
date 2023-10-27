@@ -63,7 +63,9 @@
     "pricing":"Pricing",
     "updateing":"Updateing...",
     "updateListing":"Update listing",
-    "upload":"Upload"
+    "upload":"Upload",
+    "creating": "Creating...",
+    "createListing":"Create Listing"
   },
   "listing":{
     "loading": "Loading...",

@@ -63,7 +63,9 @@
     "pricing":"Preisgestaltung",
     "updateing":"Aktualisiert...",
     "updateListing":"Eintrag aktualisieren",
-    "upload":"Hochladen"
+    "upload":"Hochladen",
+    "creating": "Erstellen...",
+    "createListing":"Eintrag erstellen"
   },
   "listing":{
     "loading": "Wird geladen...",

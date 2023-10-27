@@ -63,7 +63,9 @@
     "pricing":"Hinnoittelu",
     "updateing":"Päivitetään...",
     "updateListing":"Päivitä tiedot",
-    "upload":"Lataa"
+    "upload":"Lataa",
+    "creating": "Luodaan...",
+    "createListing":"Luo listaus"
   },
   "listing":{
     "loading": "Ladataan...",

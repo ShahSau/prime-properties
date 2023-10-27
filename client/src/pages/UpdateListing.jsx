@@ -239,9 +239,9 @@ export default function CreateListing() {
                   <div className="mt-1">
                     <input
                       type='text'
-                      placeholder='Name'
+                      placeholder='address'
                       className='block w-full p-3 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                      id='name'
+                      id='address'
                       maxLength='62'
                       minLength='10'
                       required
@@ -260,9 +260,9 @@ export default function CreateListing() {
                   <div className="mt-1">
                     <input
                       type='text'
-                      placeholder='Name'
+                      placeholder='agency'
                       className='block w-full p-3 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                      id='name'
+                      id='agency'
                       maxLength='62'
                       minLength='10'
                       required
