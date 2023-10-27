@@ -16,8 +16,7 @@ import {
   deleteUserSuccess,
   signOutUserStart,
 } from '../redux/user/userSlice'
-import { FaSignOutAlt } from 'react-icons/fa'
-import { AiOutlineUserDelete } from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -179,10 +178,19 @@ const Profile = () => {
   return (
     <div>
       <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
+      <div className='text-3xl font-semibold text-center my-7'>
+        <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+          <Link to={'/create-listing'} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
+            <AiOutlinePlus/>{t('profile.createListing')}
+          </Link>
+        </div>
+      </div>
+
+
       <form onSubmit={handleSubmit} className='flex flex-col gap-4 '>
         <div className="space-y-12">
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
-            <div className='p-6 flex-cols flex-1 '>
+            <div className='p-6 flex-cols flex-1 ml-60 md:ml-28'>
               <p className='text-2xl'>{t('profile.profile_pic')}</p>
               <input
                 onChange={(e) => setFile(e.target.files[0])}
@@ -228,7 +236,8 @@ const Profile = () => {
               </p>
             </div>
 
-            <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2 ">
+
+            <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2 ml-48 md:ml-0">
               {/*username*/}
               <div className="sm:col-span-4">
                 <label htmlFor="website" className="block text-sm font-medium leading-6 text-gray-900">
