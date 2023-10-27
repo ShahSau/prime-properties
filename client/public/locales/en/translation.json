@@ -50,7 +50,20 @@
     "discount": "Discounted Price",
     "images": "Images",
     "img_desc":"The first image will be the cover (max 6)",
-    "delete": "Delete"
+    "delete": "Delete",
+    "details": "Listing Details",
+    "name": "Name",
+    "desc": "Description",
+    "address": "Address",
+    "agency": "Agency",
+    "sale":"Sale",
+    "aminites":"Amenities",
+    "bedrooms":"Bedrooms",
+    "bathrooms":"Bathrooms",
+    "pricing":"Pricing",
+    "updateing":"Updateing...",
+    "updateListing":"Update listing",
+    "upload":"Upload"
   },
   "listing":{
     "loading": "Loading...",

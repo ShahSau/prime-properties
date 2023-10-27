@@ -50,7 +50,20 @@
     "discount": "Alennus",
     "images": "Kuvat",
     "img_desc":"Ensimmäinen kuva on kansi (enintään 6)",
-    "delete": "Poista"
+    "delete": "Poista",
+    "details": "Yksityiskohdat",
+    "name": "Nimi",
+    "desc": "Kuvaus",
+    "address": "Osoite",
+    "agency": "Toimisto",
+    "sale":"Myynti",
+    "aminites":"Mukavuudet",
+    "bedrooms":"Makuuhuoneet",
+    "bathrooms":"Kylpyhuoneet",
+    "pricing":"Hinnoittelu",
+    "updateing":"Päivitetään...",
+    "updateListing":"Päivitä tiedot",
+    "upload":"Lataa"
   },
   "listing":{
     "loading": "Ladataan...",

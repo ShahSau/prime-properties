@@ -50,7 +50,20 @@
     "discount": "Rabatt",
     "images": "Bilder",
     "img_desc":"Das erste Bild wird das Cover sein (maximal 6)",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "details": "Einzelheiten",
+    "name": "Name",
+    "desc": "Beschreibung",
+    "address": "Adresse",
+    "agency": "Agentur",
+    "sale":"Verkauf",
+    "aminites":"Annehmlichkeiten",
+    "bedrooms":"Schlafzimmer",
+    "bathrooms":"Badezimmer",
+    "pricing":"Preisgestaltung",
+    "updateing":"Aktualisiert...",
+    "updateListing":"Eintrag aktualisieren",
+    "upload":"Hochladen"
   },
   "listing":{
     "loading": "Wird geladen...",

@@ -324,7 +324,7 @@ const Profile = () => {
 
         </div>
       </div>
-      <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+      <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
         <button onClick={handleShowListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
           {t('profile.showListings')}
         </button>

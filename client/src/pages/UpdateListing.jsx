@@ -12,47 +12,13 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { RadioGroup } from '@headlessui/react'
 import { AiFillCheckCircle, AiFillDelete } from 'react-icons/ai'
-const products = [
-  {
-    id: 1,
-    title: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: 'Front of men\'s Basic Tee in black.',
-  },
-  {
-    id: 12,
-    title: 'Basi22c Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: 'Front of men\'s Basic Tee in black.',
-  },
-  // More products...
-]
-const deliveryMethods = [
-  { id: 1, title: 'Standard', turnaround: '4–10 business days', price: '$5.00' },
-  { id: 2, title: 'Express', turnaround: '2–5 business days', price: '$16.00' },
-]
-const paymentMethods = [
-  { id: 'credit-card', title: 'Credit card' },
-  { id: 'paypal', title: 'PayPal' },
-  { id: 'etransfer', title: 'eTransfer' },
-]
+import { useTranslation } from 'react-i18next'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 
 export default function CreateListing() {
+  const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)
-  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(deliveryMethods[0])
   const navigate = useNavigate()
   const params = useParams()
   const [files, setFiles] = useState([])
@@ -218,7 +184,7 @@ export default function CreateListing() {
     <main>
       <div className="bg-gray-50">
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="flex items-center text-2xl">Listing details</h2>
+          <h2 className="flex items-center text-2xl">{t('createListing.details')}</h2>
 
           <form  onSubmit={handleSubmit} className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
             <div>
@@ -226,7 +192,7 @@ export default function CreateListing() {
               <div>
                 <div className="mt-4">
                   <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  Name
+                    {t('createListing.name')}
                   </label>
                   <div className="mt-1">
                     <input
@@ -249,7 +215,7 @@ export default function CreateListing() {
               <div className='border-t border-gray-300'>
                 <div className="mt-4">
                   <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  description
+                    {t('createListing.desc')}
                   </label>
                   <div className="mt-1">
                     <textarea
@@ -268,7 +234,7 @@ export default function CreateListing() {
               <div>
                 <div className="mt-4">
                   <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  Address
+                    {t('createListing.address')}
                   </label>
                   <div className="mt-1">
                     <input
@@ -289,7 +255,7 @@ export default function CreateListing() {
               <div>
                 <div className="mt-4">
                   <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  Agency
+                    {t('createListing.agency')}
                   </label>
                   <div className="mt-1">
                     <input
@@ -309,7 +275,7 @@ export default function CreateListing() {
               <div className="grid grid-cols-1 sm:grid-cols-2">
                 <div >
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                    Rent
+                    {t('createListing.rent')}
                   </label>
                   <div className="mt-1">
                     <input
@@ -324,7 +290,7 @@ export default function CreateListing() {
 
                 <div>
                   <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                    Sale
+                    {t('createListing.sale')}
                   </label>
                   <div className="mt-1">
                     <input
@@ -338,7 +304,7 @@ export default function CreateListing() {
                 </div>
                 <div>
                   <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                    Offer
+                    {t('createListing.offer')}
                   </label>
                   <div className="mt-1">
                     <input
@@ -354,12 +320,12 @@ export default function CreateListing() {
 
 
               <div className="mt-10 border-t border-gray-200 pt-10">
-                <h2 className="text-lg font-medium text-gray-900">Amenities</h2>
+                <h2 className="text-lg font-medium text-gray-900">{t('createListing.aminites')}</h2>
 
                 <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                   <div>
                     <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
-                    Beadrooms
+                      {t('createListing.bedrooms')}
                     </label>
                     <div className="mt-1">
                       <input
@@ -377,7 +343,7 @@ export default function CreateListing() {
 
                   <div>
                     <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                    Bathrooms
+                      {t('createListing.bathrooms')}
                     </label>
                     <div className="mt-1">
                       <input
@@ -395,7 +361,7 @@ export default function CreateListing() {
 
                   <div className="">
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                    furnished
+                      {t('createListing.furnished')}
                     </label>
                     <div className="mt-1">
                       <input
@@ -410,7 +376,7 @@ export default function CreateListing() {
 
                   <div className="">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                    parking
+                      {t('createListing.parking')}
                     </label>
                     <div className="mt-1">
                       <input
@@ -425,7 +391,7 @@ export default function CreateListing() {
 
                   <div className="sm:col-span-2">
                     <label htmlFor="apartment" className="block text-sm font-medium text-gray-700">
-                    Areas
+                      {t('createListing.area')}
                     </label>
                     <div className="mt-1">
                       <input
@@ -444,11 +410,11 @@ export default function CreateListing() {
               </div>
 
               <div className="mt-10 border-t border-gray-200 pt-10">
-                <h2 className="text-lg font-medium text-gray-900">Amenities</h2>
+                <h2 className="text-lg font-medium text-gray-900">{t('createListing.pricing')}</h2>
                 <div className="mt-6">
                   <div className="sm:col-span-2">
                     <label htmlFor="apartment" className="block text-sm font-medium text-gray-700">
-                    Regular Price
+                      {t('createListing.regular')}
                     </label>
                     <div className="mt-1">
                       <input
@@ -470,7 +436,7 @@ export default function CreateListing() {
                   {formData.offer && (
                     <div className="sm:col-span-2">
                       <label htmlFor="apartment" className="block text-sm font-medium text-gray-700">
-                    Discounted price
+                        {t('createListing.discount')}
                       </label>
                       <div className="mt-1">
                         <input
@@ -484,7 +450,7 @@ export default function CreateListing() {
                           value={formData.discountPrice}
                         />
                         {formData.type === 'rent' && (
-                          <span className='text-xs'>($ / month)</span>
+                          <span className='text-xs'>($ / {t('createListing.month')})</span>
                         )}
                       </div>
                     </div>
@@ -495,9 +461,9 @@ export default function CreateListing() {
 
             {/* Images */}
             <div className="mt-10 lg:mt-0">
-              <h2 className="text-lg font-medium text-gray-900">Images</h2>
+              <h2 className="text-lg font-medium text-gray-900">{t('createListing.images')}</h2>
               <span className='font-normal text-gray-600 ml-2'>
-                The first image will be the cover (max 6)
+                {t('createListing.img_desc')}
               </span>
               {/* upload images*/}
               <div className='flex gap-4'>
@@ -515,8 +481,7 @@ export default function CreateListing() {
                   onClick={handleImageSubmit}
                   className='w-full rounded-md border border-transparent bg-green-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-50'
                 >
-
-                  {uploading ? 'Uploading...' : 'Upload'}
+                  {uploading ? t('createListing.updateing') : t('createListing.upload')}
                 </button>
               </div>
               {
@@ -571,7 +536,8 @@ export default function CreateListing() {
               disabled={loading || uploading}
               className= 'mt-6 rounded-md bg-indigo-600 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
-              {loading ? 'Updating...' : 'Update listing'}
+              {/* {loading ? 'Updating...' : 'Update listing'} */}
+              {loading ? t('createListing.updateing') : t('createListing.updateListing')}
             </button>
             {/* End Images */}
           </form>
