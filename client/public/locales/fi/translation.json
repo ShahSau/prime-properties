@@ -6,7 +6,7 @@
     "header": "Tervetuloa kotisivuille!"
   },
   "contact":{
-    "send": "Lähettää sähköpostia"
+    "send": "napsauta tästä lähettääksesi sähköpostia"
   },
   "about":{
     "header": "Tietoa meistä",
@@ -40,7 +40,9 @@
     "sell": "Myy",
     "rent": "Vuokra",
     "parking": "Parkkipaikka",
+    "no_parking": "Ei parkkipaikkaa",
     "furnished": "Kalustettu",
+    "no_furnished": "Ei kalustettu",
     "offer": "Tarjous",
     "beds": "Vuoteet",
     "baths": "Kylpyhuoneet",

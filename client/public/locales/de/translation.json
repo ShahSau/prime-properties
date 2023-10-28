@@ -6,7 +6,7 @@
     "header": "Willkommen auf der Homepage!"
   },
   "contact":{
-    "send": "E-Mail senden"
+    "send": "Klicken Sie hier, um eine E-Mail zu senden"
   },
   "about":{
     "header": "Über uns",
@@ -40,7 +40,9 @@
     "sell": "Verkaufen",
     "rent": "Mieten",
     "parking": "Parken",
+    "no_parking": "Kein Parkplatz",
     "furnished": "Möbliert",
+    "no_furnished": "Nicht möbliert",
     "offer": "Angebot",
     "beds": "Betten",
     "baths": "Bäder",

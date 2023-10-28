@@ -6,7 +6,7 @@
     "header": "Welcome to home page!"
   },
   "contact":{
-    "send": "Send Email"
+    "send": "Click here to Send Email"
   },
   "about":{
     "header": "About Us",
@@ -40,7 +40,9 @@
     "sell": "Sell",
     "rent": "Rent",
     "parking": "Parking Sport",
+    "no_parking": "No Parking Sport",
     "furnished": "Furnished",
+    "no_furnished": "No Furnished",
     "offer": "Offer",
     "beds": "Beds",
     "baths": "Baths",
