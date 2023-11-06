@@ -3,7 +3,17 @@
     "header": "Welcome to the app!"
   },
   "home":{
-    "header": "Welcome to home page!"
+    "header": "Welcome to home page!",
+    "head1":"Find your next perfect",
+    "head2":"place with ease",
+    "para1":"Prime properties is the best place to find your next perfect place to live.",
+    "para2":"We have a wide range of properties for you to choose from.",
+    "offers":"Recent offers",
+    "offers1":"Show more offers",
+    "rent":"Recent places for rent",
+    "rent1":"Apartments for rent",
+    "sale":"Recent places for sale",
+    "sale1":"Places for sale"
   },
   "contact":{
     "send": "Click here to Send Email"

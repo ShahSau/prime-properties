@@ -3,7 +3,17 @@
     "header": "Tervetuloa"
   },
   "home":{
-    "header": "Tervetuloa kotisivuille!"
+    "header": "Tervetuloa",
+    "head1":"Löydä seuraava täydellinen",
+    "head2":"helposti paikka",
+    "para1":"Prime-kiinteistöt on paras paikka löytää seuraava täydellinen paikka asua",
+    "para2":"Meillä on laaja valikoima kiinteistöjä, joista voit valita.",
+    "offers":"Viimeaikaiset tarjoukset",
+    "offers1":"Näytä lisää tarjouksia",
+    "rent":"Viimeaikaiset vuokrapaikat",
+    "rent1":"Asuntoja vuokralle",
+    "sale":"Viimeaikaiset myyntipaikat",
+    "sale1":"Myyntipaikkoja"
   },
   "contact":{
     "send": "napsauta tästä lähettääksesi sähköpostia"

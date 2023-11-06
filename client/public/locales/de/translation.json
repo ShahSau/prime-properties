@@ -3,7 +3,17 @@
     "header": "Willkommen auf der Homepage!"
   },
   "home":{
-    "header": "Willkommen auf der Homepage!"
+    "header": "Willkommen auf der Homepage!",
+    "head1":"Finden Sie Ihr nächstes Perfekt",
+    "head2":"Mit Leichtigkeit platzieren",
+    "para1":"Prime Properties ist der beste Ort, um Ihren nächsten perfekten Wohnort zu finden.",
+    "para2":"Wir haben eine große Auswahl an Immobilien für Sie.",
+    "offers":"Aktuelle Angebote",
+    "offers1":"Weitere Angebote anzeigen",
+    "rent":"Zuletzt zu vermietende Plätze",
+    "rent1":"Wohnungen zu vermieten",
+    "sale":"Letzte Orte zum Verkauf",
+    "sale1":"Plätze zum Verkau"
   },
   "contact":{
     "send": "Klicken Sie hier, um eine E-Mail zu senden"

@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Link, useNavigate } from 'react-router-dom'
+// import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper'
 import 'swiper/css/bundle'
 import ListingItem from '../components/ListingItem'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { FaSearch,FaSignOutAlt } from 'react-icons/fa'
 
 const Home = () => {
   const { t, i18n } = useTranslation()
@@ -15,6 +16,8 @@ const Home = () => {
   const [saleListings, setSaleListings] = useState([])
   const [rentListings, setRentListings] = useState([])
   const [error, setError] = useState(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const navigate = useNavigate()
   SwiperCore.use([Navigation])
   useEffect(() => {
     const fetchOfferListings = async () => {
@@ -50,56 +53,65 @@ const Home = () => {
     }
     fetchOfferListings()
   }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const urlParams = new URLSearchParams(window.location.search)
+    urlParams.set('searchTerm', searchTerm)
+    const searchQuery = urlParams.toString()
+    navigate(`/search?${searchQuery}`)
+  }
+
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search)
+    const searchTermFromUrl = urlParams.get('searchTerm')
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl)
+    }
+  }, [location.search])
+
+
   return (
     <div>
       {/* top */}
-      <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
-        <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
-          Find your next <span className='text-slate-500'>perfect</span>
+
+      <div className='flex flex-col gap-6 p-28 px-3 max-w-full items-center mx-auto bg-[url("pic.jpg")] bg-cover bg-center bg-no-repeat'>
+        <h1 className='text-blue-500 font-bold text-3xl lg:text-6xl'>
+          {t('home.head1')}
           <br />
-          place with ease
+          {t('home.head2')}
         </h1>
-        <div className='text-gray-400 text-xs sm:text-sm'>
-          Sahand Estate is the best place to find your next perfect place to
-          live.
+        <div className='text-white text-xs sm:text-sm'>
+          {t('home.para1')}
           <br />
-          We have a wide range of properties for you to choose from.
+          {t('home.para2')}
         </div>
-        <Link
-          to={'/search'}
-          className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
+
+        <form
+          onSubmit={handleSubmit}
+          className='bg-slate-600 text-slate-300 p-3 rounded-lg flex items-center border-2 border-indigo-500/100'
         >
-          Let&apos;s get started...
-        </Link>
+          <input
+            type='text'
+            placeholder={t('search.search')}
+            className='bg-transparent focus:outline-none w-24 sm:w-64'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button>
+            <FaSearch className='text-slate-300' />
+          </button>
+        </form>
       </div>
 
-      {/* swiper */}
-      <Swiper navigation>
-        {offerListings &&
-          offerListings.length > 0 &&
-          offerListings.map((listing) => (
-            // eslint-disable-next-line react/jsx-key
-            <SwiperSlide>
-              <div
-                style={{
-                  background: `url(${listing.imageUrls[0]}) center no-repeat`,
-                  backgroundSize: 'cover',
-                }}
-                className='h-[500px]'
-                key={listing._id}
-              ></div>
-            </SwiperSlide>
-          ))}
-      </Swiper>
-
       {/* listing results for offer, sale and rent */}
-
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {offerListings && offerListings.length > 0 && (
           <div className=''>
-            <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Recent offers</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?offer=true'}>Show more offers</Link>
+            <div className='my-3 md:flex md:flex-row'>
+              <h2 className='text-2xl font-semibold text-slate-600'>{t('home.offers')}</h2>
+              <Link className='text-sm text-blue-800 hover:underline p-2' to={'/search?offer=true'}>{t('home.offers1')}</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {offerListings.map((listing) => (
@@ -110,9 +122,9 @@ const Home = () => {
         )}
         {rentListings && rentListings.length > 0 && (
           <div className=''>
-            <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Recent places for rent</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
+            <div className='my-3 md:flex md:flex-row'>
+              <h2 className='text-2xl font-semibold text-slate-600'>{t('home.rent')}</h2>
+              <Link className='text-sm text-blue-800 hover:underline text-center p-2' to={'/search?type=rent'}>{t('home.rent1')}</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {rentListings.map((listing) => (
@@ -123,9 +135,9 @@ const Home = () => {
         )}
         {saleListings && saleListings.length > 0 && (
           <div className=''>
-            <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Recent places for sale</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
+            <div className='my-3 md:flex md:flex-row'>
+              <h2 className='text-2xl font-semibold text-slate-600'>{t('home.sale')}</h2>
+              <Link className='text-sm text-blue-800 hover:underline p-2' to={'/search?type=sale'}>{t('home.sale1')}</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {saleListings.map((listing) => (
