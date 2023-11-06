@@ -2,14 +2,11 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import SwiperCore from 'swiper'
 import { useSelector } from 'react-redux'
-import { Navigation } from 'swiper/modules'
-import 'swiper/css/bundle'
 import { FcHome } from 'react-icons/fc'
 import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkerAlt,
   FaParking,
   FaShare,
 } from 'react-icons/fa'
@@ -23,7 +20,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function Listing() {
   const { t, i18n } = useTranslation()
-  SwiperCore.use([Navigation])
+
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -235,31 +232,17 @@ export default function Listing() {
               {/* Description and details */}
               <div>
                 <div className="mt-6">
-                  {/* <h3 className="text-sm font-medium text-gray-900">Highlights</h3> */}
-
-                  {/* <div className="mt-4">
-                    <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                      {product.highlights.map((highlight) => (
-                        <li key={highlight} className="text-gray-400">
-                          <span className="text-gray-600">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div> */}
                   <div className='mt-4'>
                     <div className='list-disc space-y-2 pl-4'>
                       <div className='text-gray-600'>
-                        {/* <span className='text-gray-600'><FcHome /> </span> */}
                         <FcHome />
                         {listing.address}
                       </div>
                       <div className='text-gray-600'>
-                        {/* <span className='text-gray-600'><BiEuro /></span> */}
                         <BiEuro />
                         {listing.regularPrice} {listing.type === 'rent' ? 'per month' : ''}
                       </div>
                       {listing.offer && <div className='text-green-600'>
-                        {/* <span className='text-gray-600'><BiEuro /></span> */}
                         <BiEuro />
                         {listing.discountPrice} {listing.type === 'rent' ? 'per month' : ''}
                       </div>}
@@ -275,17 +258,6 @@ export default function Listing() {
                   <p className="text-base text-gray-900">{listing.description}</p>
                 </div>
               </div>
-
-              {/*
-              <section aria-labelledby="shipping-heading" className="mt-10">
-                <h2 id="shipping-heading" className="text-sm font-medium text-gray-900">
-                Details
-                </h2>
-
-                <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{product.details}</p>
-                </div>
-              </section> */}
             </div>
           </div>
         </div>

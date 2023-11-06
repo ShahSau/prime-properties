@@ -101,5 +101,26 @@
     "del_text":"Sobald Sie Ihr Konto gelöscht haben, gibt es kein Zurück mehr. Bitte seien Sie sicher.",
     "del_acc":"Lösche deinen Account",
     "profile_pic":"Profilbild"
+  },
+  "search":{
+    "heading": "Suche",
+    "type": "Typ",
+    "r&s": "Miete & Verkauf",
+    "rent": "Miete",
+    "sale": "Verkauf",
+    "offer": "Angebot",
+    "aminites": "Annehmlichkeiten",
+    "parking": "Parken",
+    "furnished": "Möbliert",
+    "sort": "Sortieren nach",
+    "htol":"Preis hoch bis niedrig",
+    "ltoh":"Preis niedrig bis hoch",
+    "new":"Neueste",
+    "old":"Älteste",
+    "search":"Suche",
+    "loading":"Wird geladen...",
+    "showMore":"Mehr anzeigen",
+    "listingResult": "Listing Ergebnisse",
+    "noResult": "Keine Ergebnisse gefunden"
   }
 }

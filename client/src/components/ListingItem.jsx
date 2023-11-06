@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import { MdLocationOn } from 'react-icons/md'
-
+import {
+  FaBath,
+  FaBed,
+} from 'react-icons/fa'
 export default function ListingItem({ listing }) {
   return (
-    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
+    <div className='bg-white shadow-md hover:shadow-xl transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px] mb-6'>
       <Link to={`/listing/${listing._id}`}>
         <img
           src={
@@ -35,14 +38,12 @@ export default function ListingItem({ listing }) {
           </p>
           <div className='text-slate-700 flex gap-4'>
             <div className='font-bold text-xs'>
-              {listing.bedrooms > 1
-                ? `${listing.bedrooms} beds `
-                : `${listing.bedrooms} bed `}
+              <FaBed className='inline-block h-4 w-4 m-1' />
+              {listing.bedrooms}
             </div>
             <div className='font-bold text-xs'>
-              {listing.bathrooms > 1
-                ? `${listing.bathrooms} baths `
-                : `${listing.bathrooms} bath `}
+              <FaBath className='inline-block h-4 w-4 m-1' />
+              {listing.bathrooms}
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import ListingItem from '../components/ListingItem'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useTranslation } from 'react-i18next'
 export default function Search() {
   const navigate = useNavigate()
   const [sidebardata, setSidebardata] = useState({
@@ -15,7 +16,7 @@ export default function Search() {
     sort: 'created_at',
     order: 'desc',
   })
-
+  const { t, i18n } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [listings, setListings] = useState([])
   const [error, setError] = useState(null)
@@ -134,21 +135,21 @@ export default function Search() {
 
   return (
     <div className='flex flex-col md:flex-row'>
-      <div className='p-7  border-b-2 md:border-r-2 md:min-h-screen'>
-        <form onSubmit={handleSubmit}  className='flex flex-col gap-8'>
+      <div className='flex-1'>
+        <form onSubmit={handleSubmit}  className='flex flex-col gap-8 items-center mt-2'>
           <div className='flex items-center gap-2'>
-            <label className='whitespace-nowrap font-semibold'>Search Term:</label>
+            <label className='whitespace-nowrap font-semibold'>{t('search.heading')}</label>
             <input
               type='text'
               id='searchTerm'
               placeholder='Search...'
-              className='border rounded-lg p-3 w-full'
+              className='border rounded-lg p-3'
               value={sidebardata.searchTerm}
               onChange={handleChange}
             />
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
-            <label className='font-semibold'>Type:</label>
+            <label className='font-semibold'>{t('search.type')}:</label>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -157,7 +158,7 @@ export default function Search() {
                 checked={sidebardata.type === 'all'}
                 onChange={handleChange}
               />
-              <span>Rent & Sale</span>
+              <span>{t('search.r&s')}</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -167,11 +168,11 @@ export default function Search() {
                 checked={sidebardata.type === 'rent'}
                 onChange={handleChange}
               />
-              <span>Rent</span>
+              <span>{t('search.rent')}</span>
             </div>
             <div className='flex gap-2'>
               <input type='checkbox' id='sale' className='w-5' />
-              <span>Sale</span>
+              <span>{t('search.sale')}</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -181,11 +182,11 @@ export default function Search() {
                 checked={sidebardata.offer}
                 onChange={handleChange}
               />
-              <span>Offer</span>
+              <span>{t('search.offer')}</span>
             </div>
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
-            <label className='font-semibold'>Amenities:</label>
+            <label className='font-semibold'>{t('search.aminites')}:</label>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -194,7 +195,7 @@ export default function Search() {
                 checked={sidebardata.parking}
                 onChange={handleChange}
               />
-              <span>Parking</span>
+              <span>{t('search.parking')}</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -204,52 +205,50 @@ export default function Search() {
                 checked={sidebardata.furnished}
                 onChange={handleChange}
               />
-              <span>Furnished</span>
+              <span>{t('search.furnished')}</span>
             </div>
           </div>
           <div className='flex items-center gap-2'>
-            <label className='font-semibold'>Sort:</label>
+            <label className='font-semibold'>{t('search.sort')}:</label>
             <select
               id='sort_order'
               className='border rounded-lg p-3'
               onChange={handleChange}
               defaultValue={'created_at_desc'}
             >
-              <option value='regularPrice_desc'>Price high to low</option>
-              <option value='regularPrice_asc'>Price low to hight</option>
-              <option value='createdAt_desc'>Latest</option>
-              <option value='createdAt_asc'>Oldest</option>
+              <option value='regularPrice_desc'>{t('search.htol')}</option>
+              <option value='regularPrice_asc'>{t('search.ltoh')}</option>
+              <option value='createdAt_desc'>{t('search.new')}</option>
+              <option value='createdAt_asc'>{t('search.old')}</option>
             </select>
           </div>
           <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>
-            Search
+            {t('search.search')}
           </button>
         </form>
-      </div>
-      <div className='flex-1'>
-        <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>Listing results:</h1>
+        <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>{t('search.listingResult')}:</h1>
         <div className='p-7 flex flex-wrap gap-4'>
           {!loading && listings.length === 0 && (
-            <p className='text-xl text-slate-700'>No listing found!</p>
+            <p className='text-xl text-slate-700'>{t('search.noResult')}</p>
           )}
           {loading && (
             <p className='text-xl text-slate-700 text-center w-full'>
-              Loading...
+              {t('search.loading')}
             </p>
           )}
 
           {!loading &&
-            listings &&
-            listings.map((listing) => (
-              <ListingItem key={listing._id} listing={listing} />
-            ))}
+          listings &&
+          listings.map((listing) => (
+            <ListingItem key={listing._id} listing={listing} />
+          ))}
 
           {showMore && (
             <button
               onClick={onShowMoreClick}
               className='text-green-700 hover:underline p-7 text-center w-full'
             >
-              Show more
+              {t('search.showMore')}
             </button>
           )}
         </div>

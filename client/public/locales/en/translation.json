@@ -101,5 +101,26 @@
     "del_text":"Once you delete your account, there is no going back. Please be certain.",
     "del_acc":"Delete Your Account",
     "profile_pic":"Profile Picture"
+  },
+  "search":{
+    "heading": "Search Term",
+    "type": "Type",
+    "r&s": "Rent & Sale",
+    "rent": "Rent",
+    "sale": "Sale",
+    "offer": "Offer",
+    "aminites": "Amenities",
+    "parking": "Parking",
+    "furnished": "Furnished",
+    "sort": "Sort",
+    "htol":"Price high to low",
+    "ltoh":"Price low to high",
+    "new":"Newest",
+    "old":"Oldest",
+    "search":"Search",
+    "loading":"Loading...",
+    "showMore":"Show More",
+    "listingResult": "Listing Results",
+    "noResult": "No Results Found"
   }
 }

@@ -101,5 +101,26 @@
     "del_text":"Kun olet poistanut tilisi, paluuta ei ole. Ole varma.",
     "del_acc":"poista tilisi",
     "profile_pic":"Profiilikuva"
+  },
+  "search":{
+    "heading": "Hae",
+    "type": "Tyyppi",
+    "r&s": "Vuokra ja myynti",
+    "rent": "Vuokra",
+    "sale": "Myynti",
+    "offer": "Tarjous",
+    "aminites": "Mukavuudet",
+    "parking": "Parkkipaikka",
+    "furnished": "Kalustettu",
+    "sort": "Lajittele",
+    "htol":"Hinta korkeasta matalaan",
+    "ltoh":"Hinta matalasta korkeaan",
+    "new":"Uusin",
+    "old":"Vanhin",
+    "search":"Hae",
+    "loading":"Ladataan...",
+    "showMore":"Näytä lisää",
+    "listingResult": "Listaukset",
+    "noResult": "Ei tuloksia"
   }
 }
