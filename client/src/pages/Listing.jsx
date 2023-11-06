@@ -16,7 +16,8 @@ import Contact from '../components/Contact'
 import { useTranslation } from 'react-i18next'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 export default function Listing() {
   const { t, i18n } = useTranslation()
@@ -61,32 +62,44 @@ export default function Listing() {
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-              <img
-                src={listing.imageUrls[0]}
+              <LazyLoadImage
                 alt='listing image'
+                effect="blur"
+                src={listing.imageUrls[0]}
+                width="100%"
+                height="100%"
                 className="h-full w-full object-cover object-center"
               />
             </div>
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                  src={listing.imageUrls[1]}
+                <LazyLoadImage
                   alt='listing image'
+                  effect="blur"
+                  src={listing.imageUrls[1]}
+                  width="100%"
+                  height="100%"
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                  src={listing.imageUrls[2]}
+                <LazyLoadImage
                   alt='listing image'
+                  effect="blur"
+                  src={listing.imageUrls[2]}
+                  width="100%"
+                  height="100%"
                   className="h-full w-full object-cover object-center"
                 />
               </div>
             </div>
             <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-              <img
-                src={listing.imageUrls[3]}
+              <LazyLoadImage
                 alt='listing image'
+                effect="blur"
+                src={listing.imageUrls[3]}
+                width="100%"
+                height="100%"
                 className="h-full w-full object-cover object-center"
               />
             </div>
