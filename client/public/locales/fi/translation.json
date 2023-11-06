@@ -97,7 +97,7 @@
     "error1":"Virhe kuvan latauksessa (kuvan on oltava alle 2 Mt)",
     "success1":"Kuva ladattu onnistuneesti",
     "loading": "Ladataan...",
-    "update": "Päivitä",
+    "update": "Päivitä tiedot",
     "createListing": "Luo listaus",
     "deleteAccount": "Poista tili",
     "signout": "Kirjaudu ulos",
@@ -110,7 +110,10 @@
     "password": "Salasana",
     "del_text":"Kun olet poistanut tilisi, paluuta ei ole. Ole varma.",
     "del_acc":"poista tilisi",
-    "profile_pic":"Profiilikuva"
+    "profile_pic":"Profiilikuva",
+    "join": "Liitynyt",
+    "buyer": "Ostaja",
+    "b&s": "Vuokra ja myynti"
   },
   "search":{
     "heading": "Hae",
@@ -132,5 +135,12 @@
     "showMore":"Näytä lisää",
     "listingResult": "Listaukset",
     "noResult": "Ei tuloksia"
+  },
+  "signinup":{
+    "signin": "Kirjaudu sisään",
+    "signup": "Rekisteröidy",
+    "nmember":"Etkö ole jäsen?",
+    "acc": "on tili",
+    "continue": "tai jatka"
   }
 }

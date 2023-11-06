@@ -119,24 +119,6 @@ const Profile = () => {
     }
   }
 
-  const handleSignOut = async () => {
-
-    try {
-      dispatch(signOutUserStart())
-      const res = await fetch('/api/auth/signout')
-      const data = await res.json()
-      if (data.success === false) {
-        dispatch(deleteUserFailure(data.message))
-        return
-      }
-      dispatch(deleteUserSuccess(data))
-    } catch (error) {
-      setFetchError(error.message)
-
-      dispatch(deleteUserFailure())
-    }
-  }
-
   const handleShowListings = async () => {
     try {
       setShowListingsError(false)
@@ -179,17 +161,17 @@ const Profile = () => {
     <div>
       <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
       <div className='text-3xl font-semibold text-center my-7'>
-        <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+        {currentUser.type === 'both' && <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
           <Link to={'/create-listing'} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
             <AiOutlinePlus/>{t('profile.createListing')}
           </Link>
-        </div>
+        </div>}
       </div>
 
 
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4 '>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4 border-b pb-4 border-gray-900/10'>
         <div className="space-y-12">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10  pb-12 md:grid-cols-3">
             <div className='p-6 flex-cols flex-1 ml-60 md:ml-28'>
               <p className='text-2xl'>{t('profile.profile_pic')}</p>
               <input
@@ -295,11 +277,26 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
+
+              <div className='sm:col-span-4'>
+                <label className='font-semibold'>{t('profile.join')}</label>
+                <select
+                  id='type'
+                  className='border rounded-lg p-3'
+                  onChange={handleChange}
+                  defaultValue={currentUser.type}
+                >
+                  <option value='buyer'>{t('profile.buyer')}</option>
+                  <option value='both'>{t('profile.b&s')}</option>
+                </select>
+              </div>
+
             </div>
           </div>
 
+
           {/** */}
-          <div className="mt-3 flex items-center justify-end gap-x-6 mr-4">
+          <div className="mt-3 flex items-center text-center justify-center gap-x-6 mr-4">
             <button
               disabled={loading}
               className="rounded-md bg-indigo-600 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

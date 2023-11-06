@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useTranslation } from 'react-i18next'
 
 export default function OAuth() {
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
 
   //google
   const handleGoogleClick = async () => {
@@ -48,7 +50,7 @@ export default function OAuth() {
           <div className="w-full border-t border-gray-200" />
         </div>
         <div className="relative flex justify-center text-sm font-medium leading-6">
-          <span className=" px-6 text-gray-900">Or continue with</span>
+          <span className=" px-6 text-gray-900">{t('signinup.continue')}</span>
         </div>
       </div>
       <div className="mt-6 grid grid-cols-1 gap-4">

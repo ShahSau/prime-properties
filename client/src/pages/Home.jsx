@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper'
 import 'swiper/css/bundle'
 import ListingItem from '../components/ListingItem'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { FaSearch,FaSignOutAlt } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
 
 const Home = () => {
   const { t, i18n } = useTranslation()
@@ -22,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?offer=true&limit=4')
+        const res = await fetch('/api/listing/get?offer=true&limit=8')
         const data = await res.json()
         setOfferListings(data)
         fetchRentListings()
@@ -32,7 +31,7 @@ const Home = () => {
     }
     const fetchRentListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=rent&limit=4')
+        const res = await fetch('/api/listing/get?type=rent&limit=8')
         const data = await res.json()
         setRentListings(data)
         fetchSaleListings()
@@ -44,7 +43,7 @@ const Home = () => {
 
     const fetchSaleListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=sale&limit=4')
+        const res = await fetch('/api/listing/get?type=sale&limit=8')
         const data = await res.json()
         setSaleListings(data)
       } catch (error) {

@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { AiFillCheckCircle, AiFillDelete } from 'react-icons/ai'
+import { AiFillDelete } from 'react-icons/ai'
 export default function CreateListing() {
   const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)

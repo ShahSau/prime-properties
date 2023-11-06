@@ -9,11 +9,13 @@ import {
 import OAuth from '../components/OAuth'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useTranslation } from 'react-i18next'
 
 const SignIn = () => {
   const [formData, setFormData] = useState({})
   const [fetcherror, setFetchError] = useState(null)
   const { loading, error } = useSelector((state) => state.user)
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const handleChange = (e) => {
@@ -48,7 +50,7 @@ const SignIn = () => {
   }
   return (
     <div className='p-3 max-w-lg mx-auto '>
-      <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
+      <h1 className='text-3xl text-center font-semibold my-7'>{t('signinup.signin')}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='email'
@@ -69,15 +71,15 @@ const SignIn = () => {
           disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'Loading...' : 'Sign In'}
+          {loading ? t('listing.loading') : t('signinup.signin')}
         </button>
       </form>
       {/* social media login*/}
       <OAuth />
       <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
+        {t('signinup.nmember')}{' '}
         <Link to={'/sign-up'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Sign up
+          {t('signinup.signup')}
         </Link>
       </p>
       {fetcherror && toast.error(`${fetcherror}`, {

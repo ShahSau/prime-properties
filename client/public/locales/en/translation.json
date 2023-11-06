@@ -97,7 +97,7 @@
     "error1":"Error Image upload (image must be less than 2 mb)",
     "success1":"Image successfully uploaded!",
     "loading": "Loading...",
-    "update": "Update",
+    "update": "Update Profile",
     "createListing": "Create a Listing",
     "deleteAccount": "Delete Account",
     "signout": "Sign Out",
@@ -110,7 +110,10 @@
     "password": "Password",
     "del_text":"Once you delete your account, there is no going back. Please be certain.",
     "del_acc":"Delete Your Account",
-    "profile_pic":"Profile Picture"
+    "profile_pic":"Profile Picture",
+    "join": "Join us",
+    "buyer": "Buyer",
+    "b&s": "Buyer & Seller"
   },
   "search":{
     "heading": "Search Term",
@@ -132,5 +135,12 @@
     "showMore":"Show More",
     "listingResult": "Listing Results",
     "noResult": "No Results Found"
+  },
+  "signinup":{
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "nmember":"Not a member?",
+    "acc": "have an account",
+    "continue": "or continue with"
   }
 }

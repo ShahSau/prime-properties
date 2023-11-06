@@ -97,7 +97,7 @@
     "error1":"Fehler beim Hochladen des Bildes (Bild muss kleiner als 2 MB sein)",
     "success1":"Profil erfolgreich aktualisiert",
     "loading": "Wird geladen...",
-    "update": "Aktualisieren",
+    "update": "Aktualisieren Sie Ihr Profil",
     "createListing": "Erstellen Sie einen Eintrag",
     "deleteAccount": "Konto löschen",
     "signout": "Abmelden",
@@ -110,7 +110,10 @@
     "password": "Passwort",
     "del_text":"Sobald Sie Ihr Konto gelöscht haben, gibt es kein Zurück mehr. Bitte seien Sie sicher.",
     "del_acc":"Lösche deinen Account",
-    "profile_pic":"Profilbild"
+    "profile_pic":"Profilbild",
+    "join": "Mach mit",
+    "buyer": "Käufer",
+    "b&s": "Käufer & Verkäufer"
   },
   "search":{
     "heading": "Suche",
@@ -132,5 +135,12 @@
     "showMore":"Mehr anzeigen",
     "listingResult": "Listing Ergebnisse",
     "noResult": "Keine Ergebnisse gefunden"
+  },
+  "signinup":{
+    "signin": "Anmelden",
+    "signup": "Anmelden",
+    "nmember":"Kein Mitglied?",
+    "acc": "Konto erstellen",
+    "continue": "oder fortfahren mit"
   }
 }

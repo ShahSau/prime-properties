@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema(
       type: Array,
       default: []
     },
+    type:{
+      type: String,
+      default: 'both',
+      required: true
+    }
   },
   { timestamps: true }
 )

@@ -3,12 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import OAuth from '../components/OAuth'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import { useTranslation } from 'react-i18next'
 const SignUp = () => {
   const [formData, setFormData] = useState({})
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -27,7 +28,6 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       })
       const data = await res.json()
-      console.log(data)
       if (data.success === false) {
         setLoading(false)
         setError(data.message)
@@ -43,7 +43,7 @@ const SignUp = () => {
   }
   return (
     <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
+      <h1 className='text-3xl text-center font-semibold my-7'>{t('signinup.signup')}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='text'
@@ -66,19 +66,31 @@ const SignUp = () => {
           id='password'
           onChange={handleChange}
         />
+        <div className='flex items-center gap-2'>
+          <label className='font-semibold'>{t('profile.join')}</label>
+          <select
+            id='type'
+            className='border rounded-lg p-3'
+            onChange={handleChange}
+            defaultValue={'both'}
+          >
+            <option value='buyer'>{t('profile.buyer')}</option>
+            <option value='both'>{t('profile.b&s')}</option>
+          </select>
+        </div>
 
         <button
           disabled={loading}
           className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'Loading...' : 'Sign Up'}
+          {loading ? t('listing.loading') : t('signinup.signup')}
         </button>
       </form>
       <OAuth />
       <div className="flex gap-2 mt-5">
-        <p>Have an account?</p>
+        <p>{t('signinup.acc')}</p>
         <Link to={'/sign-in'}>
-          <span className='text-blue-700'>Sign in</span>
+          <span className='text-blue-700'>{t('signinup.signin')}</span>
         </Link>
       </div>
       {error &&
