@@ -18,6 +18,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
+import { motion } from 'framer-motion'
 
 export default function Listing() {
   const { t, i18n } = useTranslation()
@@ -53,7 +54,12 @@ export default function Listing() {
   }, [params.listingId])
 
   return (
-    <main className="pt-10 sm:pt-16">
+    <motion.main className="pt-10 sm:pt-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       { loading &&
         <p className='text-center my-7 text-2xl'>{t('listing.loading')}</p>
       }
@@ -276,6 +282,6 @@ export default function Listing() {
         </div>
       )}
       <ToastContainer />
-    </main>
+    </motion.main>
   )
 }

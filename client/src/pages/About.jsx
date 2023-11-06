@@ -3,7 +3,7 @@ import { BsFillRocketTakeoffFill } from 'react-icons/bs'
 import { BiSolidGroup } from 'react-icons/bi'
 import { TbHandStop } from 'react-icons/tb'
 import { HiSun,HiSparkles,HiAcademicCap } from 'react-icons/hi'
-
+import { motion } from 'framer-motion'
 const About = () => {
   const { t, i18n } = useTranslation()
 
@@ -47,7 +47,12 @@ const About = () => {
   ]
 
   return (
-    <div className="bg-white">
+    <motion.div className="bg-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       <main className="isolate">
         {/* Hero section */}
         <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-10">
@@ -218,7 +223,7 @@ const About = () => {
         </div>
 
       </main>
-    </div>
+    </motion.div>
   )
 }
 

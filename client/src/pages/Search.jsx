@@ -5,6 +5,7 @@ import ListingItem from '../components/ListingItem'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 export default function Search() {
   const navigate = useNavigate()
   const [sidebardata, setSidebardata] = useState({
@@ -134,7 +135,12 @@ export default function Search() {
   }
 
   return (
-    <div className='flex flex-col md:flex-row'>
+    <motion.div className='flex flex-col md:flex-row'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       <div className='flex-1'>
         <form onSubmit={handleSubmit}  className='flex flex-col gap-8 items-center mt-2'>
           <div className='flex items-center gap-2'>
@@ -266,6 +272,6 @@ export default function Search() {
         })
       }
       <ToastContainer />
-    </div>
+    </motion.div>
   )
 }

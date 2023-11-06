@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ItemListing from '../components/ItemListing'
+import { motion } from 'framer-motion'
 
 const Profile = () => {
   const fileRef = useRef(null)
@@ -158,7 +159,12 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
       <div className='text-3xl font-semibold text-center my-7'>
         {currentUser.type === 'both' && <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
@@ -341,7 +347,7 @@ const Profile = () => {
       }
       <ToastContainer />
 
-    </div>
+    </motion.div>
   )
 }
 

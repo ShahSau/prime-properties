@@ -8,7 +8,7 @@ import ListingItem from '../components/ListingItem'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { FaSearch } from 'react-icons/fa'
-
+import { motion } from 'framer-motion'
 const Home = () => {
   const { t, i18n } = useTranslation()
   const [offerListings, setOfferListings] = useState([])
@@ -72,7 +72,12 @@ const Home = () => {
 
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       {/* top */}
 
       <div className='flex flex-col gap-6 p-28 px-3 max-w-full items-center mx-auto bg-[url("pic.jpg")] bg-cover bg-center bg-no-repeat'>
@@ -159,7 +164,7 @@ const Home = () => {
         })
       }
       <ToastContainer />
-    </div>
+    </motion.div>
   )
 }
 

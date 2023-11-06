@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AiFillDelete } from 'react-icons/ai'
+import { motion } from 'framer-motion'
+
 export default function CreateListing() {
   const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)
@@ -163,260 +165,12 @@ export default function CreateListing() {
   }
 
   return (
-  // <main className='p-3 max-w-4xl mx-auto'>
-  //   <h1 className='text-3xl font-semibold text-center my-7'>
-  //     {t('createListing.header')}
-  //   </h1>
-  //   <form  onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
-  //     <div className='flex flex-col gap-4 flex-1'>
-  //       <input
-  //         type='text'
-  //         placeholder='Name'
-  //         className='border p-3 rounded-lg'
-  //         id='name'
-  //         maxLength='62'
-  //         minLength='10'
-  //         required
-  //         onChange={handleChange}
-  //         value={formData.name}
-  //       />
-  //       <textarea
-  //         type='text'
-  //         placeholder='Description'
-  //         className='border p-3 rounded-lg'
-  //         id='description'
-  //         required
-  //         onChange={handleChange}
-  //         value={formData.description}
-  //       />
-  //       <input
-  //         type='text'
-  //         placeholder='Address'
-  //         className='border p-3 rounded-lg'
-  //         id='address'
-  //         required
-  //         onChange={handleChange}
-  //         value={formData.address}
-  //       />
-  //       <input
-  //         type='text'
-  //         placeholder='Agency'
-  //         className='border p-3 rounded-lg'
-  //         id='agency'
-  //         required
-  //         onChange={handleChange}
-  //         value={formData.agency}
-  //       />
-  //       <div className='flex gap-6 flex-wrap'>
-  //         <div className='flex gap-2'>
-  //           <input
-  //             type='checkbox'
-  //             id='sale'
-  //             className='w-5'
-  //             onChange={handleChange}
-  //             checked={formData.type === 'sale'}
-  //           />
-  //           <span>{t('createListing.sell')} </span>
-  //         </div>
-  //         <div className='flex gap-2'>
-  //           <input
-  //             type='checkbox'
-  //             id='rent'
-  //             className='w-5'
-  //             onChange={handleChange}
-  //             checked={formData.type === 'rent'}
-  //           />
-  //           <span>{t('createListing.rent')}</span>
-  //         </div>
-  //         <div className='flex gap-2'>
-  //           <input
-  //             type='checkbox'
-  //             id='parking'
-  //             className='w-5'
-  //             onChange={handleChange}
-  //             checked={formData.parking}
-  //           />
-  //           <span>{t('createListing.parking')}</span>
-  //         </div>
-  //         <div className='flex gap-2'>
-  //           <input
-  //             type='checkbox'
-  //             id='furnished'
-  //             className='w-5'
-  //             onChange={handleChange}
-  //             checked={formData.furnished}
-  //           />
-  //           <span>{t('createListing.furnished')}</span>
-  //         </div>
-  //         <div className='flex gap-2'>
-  //           <input
-  //             type='checkbox'
-  //             id='offer'
-  //             className='w-5'
-  //             onChange={handleChange}
-  //             checked={formData.offer}
-  //           />
-  //           <span>{t('createListing.offer')}</span>
-  //         </div>
-  //       </div>
-  //       <div className='flex flex-wrap gap-6'>
-  //         <div className='flex items-center gap-2'>
-  //           <input
-  //             type='number'
-  //             id='bedrooms'
-  //             min='1'
-  //             max='10'
-  //             required
-  //             className='p-3 border border-gray-300 rounded-lg'
-  //             onChange={handleChange}
-  //             value={formData.bedrooms}
-  //           />
-  //           <p>{t('createListing.beds')}</p>
-  //         </div>
-  //         <div className='flex items-center gap-2'>
-  //           <input
-  //             type='number'
-  //             id='bathrooms'
-  //             min='1'
-  //             max='10'
-  //             required
-  //             className='p-3 border border-gray-300 rounded-lg'
-  //             onChange={handleChange}
-  //             value={formData.bathrooms}
-  //           />
-  //           <p>{t('createListing.baths')}</p>
-  //         </div>
-  //         {/* */}
-  //         <div className='flex items-center gap-2'>
-  //           <input
-  //             type='number'
-  //             id='area'
-  //             min='20'
-  //             max='100'
-  //             required
-  //             className='p-3 border border-gray-300 rounded-lg'
-  //             onChange={handleChange}
-  //             value={formData.area}
-  //           />
-  //           <p>{t('createListing.area')}</p>
-  //         </div>
-  //         <div className='flex items-center gap-2'>
-  //           <input
-  //             type='number'
-  //             id='regularPrice'
-  //             min='500'
-  //             max='2000000'
-  //             required
-  //             className='p-3 border border-gray-300 rounded-lg'
-  //             onChange={handleChange}
-  //             value={formData.regularPrice}
-  //           />
-  //           <div className='flex flex-col items-center'>
-  //             <p>{t('createListing.regular')}</p>
-  //             {formData.type === 'rent' && (
-  //               <span className='text-xs'>($ / {t('createListing.month')})</span>
-  //             )}
-  //           </div>
-  //         </div>
-  //         {formData.offer && (
-  //           <div className='flex items-center gap-2'>
-  //             <input
-  //               type='number'
-  //               id='discountPrice'
-  //               min='0'
-  //               max='10000000'
-  //               required
-  //               className='p-3 border border-gray-300 rounded-lg'
-  //               onChange={handleChange}
-  //               value={formData.discountPrice}
-  //             />
-  //             <div className='flex flex-col items-center'>
-  //               <p>{t('createListing.discount')}</p>
-  //               {formData.type === 'rent' && (
-  //                 <span className='text-xs'>($ / {t('createListing.month')})</span>
-  //               )}
-  //             </div>
-  //           </div>
-  //         )}
-  //       </div>
-  //     </div>
-  //     <div className="flex flex-col flex-1 gap-4">
-  //       <p className='font-semibold'>{t('createListing.images')}
-  //         <span className='font-normal text-gray-600 ml-2'>{t('createListing.img_desc')}</span>
-  //       </p>
-  //       <div className='flex gap-4'>
-  //         <input
-  //           onChange={(e) => setFiles(e.target.files)}
-  //           className='p-3 border border-gray-300 rounded w-full'
-  //           type='file'
-  //           id='images'
-  //           accept='image/*'
-  //           multiple
-  //         />
-  //         <button
-  //           type='button'
-  //           disabled={uploading}
-  //           onClick={handleImageSubmit}
-  //           className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
-  //         >
-  //           {uploading ? 'Uploading...' : 'Upload'}
-  //         </button>
-  //       </div>
-  //       {imageUploadError   && toast.error(`${imageUploadError }`, {
-  //         position: 'bottom-center',
-  //         autoClose: 2000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: 'light',
-  //       })
-  //       }
-  //       {formData.imageUrls.length > 0 &&
-  //         formData.imageUrls.map((url, index) => (
-  //           <div
-  //             key={url}
-  //             className='flex justify-between p-3 border items-center'
-  //           >
-  //             <img
-  //               src={url}
-  //               alt='listing image'
-  //               className='w-20 h-20 object-contain rounded-lg'
-  //             />
-  //             <button
-  //               type='button'
-  //               onClick={() => handleRemoveImage(index)}
-  //               className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
-  //             >
-  //               {t('createListing.delete')}
-  //             </button>
-  //           </div>
-  //         ))}
-
-  //       <button
-  //         disabled={loading || uploading}
-  //         className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-  //       >
-  //         {loading ? 'Creating...' : 'Create listing'}
-  //       </button>
-
-    //       {error  && toast.error(`${error}`, {
-    //         position: 'bottom-center',
-    //         autoClose: 2000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: 'light',
-    //       })
-    //       }
-    //       <ToastContainer />
-    //     </div>
-    //   </form>
-    // </main>
-    <main>
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="bg-gray-50">
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="flex items-center text-2xl">{t('createListing.details')}</h2>
@@ -778,6 +532,6 @@ export default function CreateListing() {
           </form>
         </div>
       </div>
-    </main>
+    </motion.main>
   )
 }

@@ -13,8 +13,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { RadioGroup } from '@headlessui/react'
 import { AiFillCheckCircle, AiFillDelete } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
-
-
+import { motion } from 'framer-motion'
 
 export default function CreateListing() {
   const { t, i18n } = useTranslation()
@@ -182,7 +181,13 @@ export default function CreateListing() {
   }
   return (
     <main>
-      <div className="bg-gray-50">
+      <motion.div
+        className="bg-gray-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25 }}
+        exit={{ opacity: 0 }}
+      >
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="flex items-center text-2xl">{t('createListing.details')}</h2>
 
@@ -542,7 +547,7 @@ export default function CreateListing() {
             {/* End Images */}
           </form>
         </div>
-      </div>
+      </motion.div>
     </main>
 
   )

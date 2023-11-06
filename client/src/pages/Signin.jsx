@@ -10,6 +10,7 @@ import OAuth from '../components/OAuth'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 
 const SignIn = () => {
   const [formData, setFormData] = useState({})
@@ -49,7 +50,12 @@ const SignIn = () => {
     }
   }
   return (
-    <div className='p-3 max-w-lg mx-auto '>
+    <motion.div className='p-3 max-w-lg mx-auto'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+    >
       <h1 className='text-3xl text-center font-semibold my-7'>{t('signinup.signin')}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -105,7 +111,7 @@ const SignIn = () => {
       })
       }
       <ToastContainer />
-    </div>
+    </motion.div>
   )
 }
 
