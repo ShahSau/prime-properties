@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import SwiperCore from 'swiper'
+import { useParams,useNavigate } from 'react-router-dom'
+import { IoArrowBackOutline } from 'react-icons/io5'
 import { useSelector } from 'react-redux'
 import { FcHome } from 'react-icons/fc'
 import {
@@ -22,7 +22,7 @@ import { motion } from 'framer-motion'
 
 export default function Listing() {
   const { t, i18n } = useTranslation()
-
+  const navigate = useNavigate()
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -60,9 +60,14 @@ export default function Listing() {
       transition={{ duration: 0.25 }}
       exit={{ opacity: 0 }}
     >
+
       { loading &&
         <p className='text-center my-7 text-2xl'>{t('listing.loading')}</p>
       }
+      <IoArrowBackOutline
+        className='text-center m-7 text-4xl cursor-pointer'
+        onClick={() => navigate(-1)}
+      />
       {listing && !loading && !error && (
         <div>
           {/* Image gallery */}

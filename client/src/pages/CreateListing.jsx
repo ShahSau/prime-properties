@@ -13,7 +13,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AiFillDelete } from 'react-icons/ai'
 import { motion } from 'framer-motion'
-
+import { IoArrowBackOutline } from 'react-icons/io5'
 export default function CreateListing() {
   const { t, i18n } = useTranslation()
   const { currentUser } = useSelector((state) => state.user)
@@ -170,9 +170,14 @@ export default function CreateListing() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.25 }}
       exit={{ opacity: 0 }}
+      className='overflow-x-hidden bg-gray-50'
     >
       <div className="bg-gray-50">
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+          <IoArrowBackOutline
+            className='text-center m-2 text-4xl cursor-pointer'
+            onClick={() => navigate(-1)}
+          />
           <motion.h2
             className="flex items-center text-2xl"
             initial={{ y: '-100%', opacity: 0 }}
@@ -555,6 +560,7 @@ export default function CreateListing() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </motion.main>
   )
 }

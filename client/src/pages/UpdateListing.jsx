@@ -14,6 +14,7 @@ import { RadioGroup } from '@headlessui/react'
 import {  AiFillDelete } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import { IoArrowBackOutline } from 'react-icons/io5'
 
 export default function CreateListing() {
   const { t, i18n } = useTranslation()
@@ -189,6 +190,10 @@ export default function CreateListing() {
         exit={{ opacity: 0 }}
       >
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+          <IoArrowBackOutline
+            className='text-center m-2 text-4xl cursor-pointer'
+            onClick={() => navigate(-1)}
+          />
           <motion.h2
             className="flex items-center text-2xl"
             initial={{ y: '-100%', opacity: 0 }}
@@ -570,6 +575,7 @@ export default function CreateListing() {
             {/* End Images */}
           </form>
         </div>
+        <ToastContainer />
       </motion.div>
     </main>
 

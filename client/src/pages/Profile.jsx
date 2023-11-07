@@ -164,6 +164,7 @@ const Profile = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.25 }}
       exit={{ opacity: 0 }}
+      className='overflow-x-hidden'
     >
       <motion.div
         initial={{ x: '100%', opacity: 0 }}
