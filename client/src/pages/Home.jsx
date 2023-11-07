@@ -80,7 +80,13 @@ const Home = () => {
     >
       {/* top */}
 
-      <div className='flex flex-col gap-6 p-28 px-3 max-w-full items-center mx-auto bg-[url("pic.jpg")] bg-cover bg-center bg-no-repeat'>
+      <motion.div
+        className='flex flex-col gap-6 p-28 px-3 max-w-full items-center mx-auto bg-[url("pic.jpg")] bg-cover bg-center bg-no-repeat'
+        initial={{ y: '-100%', opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 2,delay: 0.25 }}
+        viewport={{ once: true }}
+      >
         <h1 className='text-blue-500 font-bold text-3xl lg:text-6xl'>
           {t('home.head1')}
           <br />
@@ -107,12 +113,18 @@ const Home = () => {
             <FaSearch className='text-slate-300' />
           </button>
         </form>
-      </div>
+      </motion.div>
 
       {/* listing results for offer, sale and rent */}
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
         {offerListings && offerListings.length > 0 && (
-          <div className=''>
+          <motion.div
+            className=''
+            initial={{ y: '-100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 3,delay: 0.25 }}
+            viewport={{ once: true }}
+          >
             <div className='my-3 md:flex md:flex-row'>
               <h2 className='text-2xl font-semibold text-slate-600'>{t('home.offers')}</h2>
               <Link className='text-sm text-blue-800 hover:underline p-2' to={'/search?offer=true'}>{t('home.offers1')}</Link>
@@ -122,10 +134,16 @@ const Home = () => {
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
         {rentListings && rentListings.length > 0 && (
-          <div className=''>
+          <motion.div
+            className=''
+            initial={{ y: '100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 2,delay: 0.25 }}
+            viewport={{ once: true }}
+          >
             <div className='my-3 md:flex md:flex-row'>
               <h2 className='text-2xl font-semibold text-slate-600'>{t('home.rent')}</h2>
               <Link className='text-sm text-blue-800 hover:underline text-center p-2' to={'/search?type=rent'}>{t('home.rent1')}</Link>
@@ -135,7 +153,7 @@ const Home = () => {
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
         {saleListings && saleListings.length > 0 && (
           <div className=''>

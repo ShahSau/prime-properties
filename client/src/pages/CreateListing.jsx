@@ -173,10 +173,23 @@ export default function CreateListing() {
     >
       <div className="bg-gray-50">
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="flex items-center text-2xl">{t('createListing.details')}</h2>
+          <motion.h2
+            className="flex items-center text-2xl"
+            initial={{ y: '-100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 2,delay: 0.25 }}
+            viewport={{ once: true }}
+          >
+            {t('createListing.details')}
+          </motion.h2>
 
           <form  onSubmit={handleSubmit} className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
-            <div>
+            <motion.div
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               {/* name */}
               <div>
                 <div className="mt-4">
@@ -446,10 +459,16 @@ export default function CreateListing() {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Images */}
-            <div className="mt-10 lg:mt-0">
+            <motion.div
+              className="mt-10 lg:mt-0"
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <h2 className="text-lg font-medium text-gray-900">{t('createListing.images')}</h2>
               <span className='font-normal text-gray-600 ml-2'>
                 {t('createListing.img_desc')}
@@ -520,14 +539,18 @@ export default function CreateListing() {
                 </ul>
               </div>
 
-            </div>
-            <button
+            </motion.div>
+            <motion.button
               disabled={loading || uploading}
               className= 'mt-6 rounded-md bg-indigo-600 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              initial={{ y: '100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
             >
               {/* {loading ? 'Updating...' : 'Update listing'} */}
               {loading ? t('createListing.creating') : t('createListing.createListing')}
-            </button>
+            </motion.button>
             {/* End Images */}
           </form>
         </div>

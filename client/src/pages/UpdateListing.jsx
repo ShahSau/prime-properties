@@ -11,7 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { RadioGroup } from '@headlessui/react'
-import { AiFillCheckCircle, AiFillDelete } from 'react-icons/ai'
+import {  AiFillDelete } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 
@@ -189,10 +189,23 @@ export default function CreateListing() {
         exit={{ opacity: 0 }}
       >
         <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="flex items-center text-2xl">{t('createListing.details')}</h2>
+          <motion.h2
+            className="flex items-center text-2xl"
+            initial={{ y: '-100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 3,delay: 0.25 }}
+          >
+            {t('createListing.details')}
+          </motion.h2>
 
           <form  onSubmit={handleSubmit} className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
-            <div>
+            <motion.div
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2,delay: 0.25 }}
+            >
               {/* name */}
               <div>
                 <div className="mt-4">
@@ -462,10 +475,16 @@ export default function CreateListing() {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Images */}
-            <div className="mt-10 lg:mt-0">
+            <motion.div
+              className="mt-10 lg:mt-0"
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2,delay: 0.25 }}
+            >
               <h2 className="text-lg font-medium text-gray-900">{t('createListing.images')}</h2>
               <span className='font-normal text-gray-600 ml-2'>
                 {t('createListing.img_desc')}
@@ -536,14 +555,18 @@ export default function CreateListing() {
                 </ul>
               </div>
 
-            </div>
-            <button
+            </motion.div>
+            <motion.button
               disabled={loading || uploading}
               className= 'mt-6 rounded-md bg-indigo-600 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              initial={{ y: '100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 3,delay: 0.25 }}
             >
               {/* {loading ? 'Updating...' : 'Update listing'} */}
               {loading ? t('createListing.updateing') : t('createListing.updateListing')}
-            </button>
+            </motion.button>
             {/* End Images */}
           </form>
         </div>

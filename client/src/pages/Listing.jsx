@@ -67,7 +67,13 @@ export default function Listing() {
         <div>
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+            <motion.div
+              className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <LazyLoadImage
                 alt='listing image'
                 effect="blur"
@@ -76,8 +82,14 @@ export default function Listing() {
                 height="100%"
                 className="h-full w-full object-cover object-center"
               />
-            </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+            </motion.div>
+            <motion.div
+              className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"
+              initial={{ y: '-100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <LazyLoadImage
                   alt='listing image'
@@ -98,8 +110,14 @@ export default function Listing() {
                   className="h-full w-full object-cover object-center"
                 />
               </div>
-            </div>
-            <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+            </motion.div>
+            <motion.div
+              className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg"
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <LazyLoadImage
                 alt='listing image'
                 effect="blur"
@@ -108,12 +126,18 @@ export default function Listing() {
                 height="100%"
                 className="h-full w-full object-cover object-center"
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* info */}
           <div className="mx-auto max-w-2xl px-4 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16">
-            <div className="flex-col lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+            <motion.div
+              className="flex-col lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8"
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <div className="flex">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{listing.name}</h1>
                 <div />
@@ -141,10 +165,16 @@ export default function Listing() {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Options */}
-            <div className="mt-4 lg:row-span-3 lg:mt-0">
+            <motion.div
+              className="mt-4 lg:row-span-3 lg:mt-0"
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <p className="text-3xl tracking-tight text-gray-900">{t('createListing.aminites')}</p>
 
               {/* Amenities */}
@@ -246,8 +276,14 @@ export default function Listing() {
                 </button>
               )}
               {contact && <Contact listing={listing}/>}
-            </div>
-            <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+            </motion.div>
+            <motion.div
+              className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6"
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               {/* Description and details */}
               <div>
                 <div className="mt-6">
@@ -277,7 +313,7 @@ export default function Listing() {
                   <p className="text-base text-gray-900">{listing.description}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       )}

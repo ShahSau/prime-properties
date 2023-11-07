@@ -45,10 +45,10 @@ const SignUp = () => {
   return (
     <motion.div
       className='p-3 max-w-lg mx-auto'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25 }}
-      exit={{ opacity: 0 }}
+      initial={{ y: '100%', opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 3,delay: 0.25 }}
     >
       <h1 className='text-3xl text-center font-semibold my-7'>{t('signinup.signup')}</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>

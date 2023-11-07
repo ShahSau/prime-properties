@@ -165,20 +165,34 @@ const Profile = () => {
       transition={{ duration: 0.25 }}
       exit={{ opacity: 0 }}
     >
-      <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
-      <div className='text-3xl font-semibold text-center my-7'>
-        {currentUser.type === 'both' && <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
-          <Link to={'/create-listing'} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
-            <AiOutlinePlus/>{t('profile.createListing')}
-          </Link>
-        </div>}
-      </div>
+      <motion.div
+        initial={{ x: '100%', opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 2,delay: 0.25 }}
+        viewport={{ once: true }}
+      >
+        <h1 className='text-3xl font-semibold text-center my-7'>{t('profile.title')}</h1>
+        <div className='text-3xl font-semibold text-center my-7'>
+          {currentUser.type === 'both' && <div className='col-span-2 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+            <Link to={'/create-listing'} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
+              <AiOutlinePlus/>{t('profile.createListing')}
+            </Link>
+          </div>}
+        </div>
+      </motion.div>
+
 
 
       <form onSubmit={handleSubmit} className='flex flex-col gap-4 border-b pb-4 border-gray-900/10'>
         <div className="space-y-12">
           <div className="grid grid-cols-1 gap-x-8 gap-y-10  pb-12 md:grid-cols-3">
-            <div className='p-6 flex-cols flex-1 ml-60 md:ml-28'>
+            <motion.div
+              className='p-6 flex-cols flex-1 ml-60 md:ml-28'
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               <p className='text-2xl'>{t('profile.profile_pic')}</p>
               <input
                 onChange={(e) => setFile(e.target.files[0])}
@@ -222,10 +236,16 @@ const Profile = () => {
                   ''
                 )}
               </p>
-            </div>
+            </motion.div>
 
 
-            <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2 ml-48 md:ml-0">
+            <motion.div
+              className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2 ml-48 md:ml-0"
+              initial={{ y: '100%', opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 2,delay: 0.25 }}
+              viewport={{ once: true }}
+            >
               {/*username*/}
               <div className="sm:col-span-4">
                 <label htmlFor="website" className="block text-sm font-medium leading-6 text-gray-900">
@@ -297,24 +317,36 @@ const Profile = () => {
                 </select>
               </div>
 
-            </div>
+            </motion.div>
           </div>
 
 
           {/** */}
-          <div className="mt-3 flex items-center text-center justify-center gap-x-6 mr-4">
+          <motion.div
+            className="mt-3 flex items-center text-center justify-center gap-x-6 mr-4"
+            initial={{ x: '-100%', opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 2,delay: 0.25 }}
+            viewport={{ once: true }}
+          >
             <button
               disabled={loading}
               className="rounded-md bg-indigo-600 px-4 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               {loading ? t('profile.loading') : t('profile.update')}
             </button>
-          </div>
+          </motion.div>
         </div>
       </form>
 
       {/* Delete user */}
-      <div className="mx-auto mt-6 max-w-7xl mb-12 sm:mt-10 sm:px-6 lg:px-8">
+      <motion.div
+        className="mx-auto mt-6 max-w-7xl mb-12 sm:mt-10 sm:px-6 lg:px-8"
+        initial={{ y: '100%', opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 2,delay: 0.25 }}
+        viewport={{ once: true }}
+      >
         <div className="relative isolate overflow-hidden  px-6 py-10 text-center shadow-2xl sm:rounded-3xl sm:px-16">
           <h2 className="mx-auto max-w-2xl text-2xl font-bold tracking-tight sm:text-2xl">
             {t('profile.del_text')}
@@ -326,7 +358,7 @@ const Profile = () => {
           </div>
 
         </div>
-      </div>
+      </motion.div>
       <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
         <button onClick={handleShowListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
           {t('profile.showListings')}

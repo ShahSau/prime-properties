@@ -142,7 +142,14 @@ export default function Search() {
       exit={{ opacity: 0 }}
     >
       <div className='flex-1'>
-        <form onSubmit={handleSubmit}  className='flex flex-col gap-8 items-center mt-2'>
+        <motion.form
+          onSubmit={handleSubmit}
+          className='flex flex-col gap-8 items-center mt-2'
+          initial={{ y: '-100%', opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 3,delay: 0.25 }}
+        >
           <div className='flex items-center gap-2'>
             <label className='whitespace-nowrap font-semibold'>{t('search.heading')}</label>
             <input
@@ -231,9 +238,15 @@ export default function Search() {
           <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>
             {t('search.search')}
           </button>
-        </form>
-        <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>{t('search.listingResult')}:</h1>
-        <div className='p-7 flex flex-wrap gap-4'>
+        </motion.form>
+        <h1 className='text-3xl font-semibold border-b p-8 text-slate-700 mt-5'>{t('search.listingResult')}:</h1>
+        <motion.div
+          className='p-8 flex flex-wrap gap-8'
+          initial={{ x: '100%', opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 3,delay: 0.25 }}
+        >
           {!loading && listings.length === 0 && (
             <p className='text-xl text-slate-700'>{t('search.noResult')}</p>
           )}
@@ -257,7 +270,7 @@ export default function Search() {
               {t('search.showMore')}
             </button>
           )}
-        </div>
+        </motion.div>
       </div>
       {error &&
         toast.error(`${error}`, {
