@@ -19,8 +19,15 @@ import 'react-toastify/dist/ReactToastify.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { motion } from 'framer-motion'
-
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { useDispatch } from 'react-redux'
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+} from '../redux/user/userSlice'
 export default function Listing() {
+  const dispatch = useDispatch()
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const [listing, setListing] = useState(null)
@@ -53,6 +60,55 @@ export default function Listing() {
     fetchListing()
   }, [params.listingId])
 
+  const addFav = async (e) => {
+    e.preventDefault()
+    try {
+      dispatch(updateUserStart())
+      const res = await fetch(`/api/user/update/${currentUser._id}/addfav`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          listingId: listing._id,
+        }),
+      })
+      const data = await res.json()
+      if (data.success === false) {
+        dispatch(updateUserFailure(data.message))
+        return
+      }
+      dispatch(updateUserSuccess(data))
+    } catch (error) {
+      dispatch(updateUserFailure(error.message))
+    }
+  }
+
+  const removeFav = async (e) => {
+    e.preventDefault()
+    try {
+      dispatch(updateUserStart())
+      const res = await fetch(`/api/user/update/${currentUser._id}/removefav`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          listingId: listing._id,
+        }),
+      })
+      const data = await res.json()
+      if (data.success === false) {
+        dispatch(updateUserFailure(data.message))
+        return
+      }
+      dispatch(updateUserSuccess(data))
+    } catch (error) {
+      dispatch(updateUserFailure(error.message))
+    }
+  }
+
+
   return (
     <motion.main className="pt-10 sm:pt-16"
       initial={{ opacity: 0 }}
@@ -71,7 +127,7 @@ export default function Listing() {
       {listing && !loading && !error && (
         <div>
           {/* Image gallery */}
-          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+          <div className="mx-auto mt-6 max-w-2xl sm:px-6  lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <motion.div
               className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
               initial={{ x: '-100%', opacity: 0 }}
@@ -147,9 +203,9 @@ export default function Listing() {
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{listing.name}</h1>
                 <div />
 
-                <div className="ml-4 flow-root flex-shrink-0">
+                <div className="ml-4 flow-root flex-shrink-0 mr-3">
                   <FaShare
-                    className='text-slate-500 h-7 w-7'
+                    className='text-slate-500 h-7 w-7 cursor-pointer'
                     onClick={() => {
                       navigator.clipboard.writeText(window.location.href)
                       setCopied(true)
@@ -169,6 +225,16 @@ export default function Listing() {
                     }}
                   />
                 </div>
+                {currentUser !== null
+                  ?
+                  currentUser?.favorites && currentUser?.favorites.includes(listing._id)
+                    ?
+                    (<AiFillHeart className='text-red-500 h-7 w-7 cursor-pointer' onClick={removeFav} />)
+                    :
+                    (<AiOutlineHeart className='text-slate-500 h-7 w-7 cursor-pointer' onClick={addFav}/>)
+                  :
+                  ''
+                }
               </div>
             </motion.div>
 

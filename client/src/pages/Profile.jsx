@@ -14,7 +14,6 @@ import {
   deleteUserFailure,
   deleteUserStart,
   deleteUserSuccess,
-  signOutUserStart,
 } from '../redux/user/userSlice'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
@@ -35,7 +34,9 @@ const Profile = () => {
   const [updateSuccess, setUpdateSuccess] = useState(false)
   const [showListingsError, setShowListingsError] = useState(false)
   const [userListings, setUserListings] = useState([])
+  const [userFavourities, setUserFavourities] = useState([])
   const [ fetcherror, setFetchError] = useState(null)
+  const [favload, setFavLoad] = useState(false)
 
   const dispatch = useDispatch()
   const { t, i18n } = useTranslation()
@@ -123,7 +124,7 @@ const Profile = () => {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false)
-      const res = await fetch(`/api/user/listings/${currentUser._id}`)
+      const res = await fetch(`/api/user/listing/${currentUser._id}`)
       const data = await res.json()
       if (data.success === false) {
         setShowListingsError(true)
@@ -156,6 +157,34 @@ const Profile = () => {
       setFetchError(error.message)
     }
 
+  }
+
+  const handleUserFav = async () => {
+    setFavLoad(true)
+    try {
+      const res = await fetch('/api/listing/favourities', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          favourities: currentUser.favorites,
+        }),
+      })
+      const data = await res.json()
+      if (data.success === false) {
+        //setFetchError(data.message)
+        return
+      }
+      setUserFavourities(data)
+      setFavLoad(false)
+      // dispatch(updateUserSuccess(data))
+      // setUpdateSuccess(true)
+    } catch (error) {
+      setFetchError(error.message)
+
+      // dispatch(updateUserFailure(error.message))
+    }
   }
 
   return (
@@ -360,16 +389,41 @@ const Profile = () => {
 
         </div>
       </motion.div>
-      <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+      {/* Listings */}
+      {currentUser.type === 'both' && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
         <button onClick={handleShowListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
           {t('profile.showListings')}
         </button>
-      </div>
+      </div>}
       {userListings &&
          userListings.length > 0 &&
          <>
            <div className='flex flex-wrap gap-4 p-6'>
              {userListings.map((listing) => (
+               <ItemListing
+                 listing={listing} key={listing._id}
+                 onDelete={() => handleListingDelete(listing._id)}
+               />
+             ))}
+           </div>
+         </>
+      }
+
+      {currentUser.type === 'buyer' && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+        <button onClick={handleUserFav} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
+          {t('profile.showFavourites')}
+        </button>
+      </div>}
+      {favload &&
+        <div className='flex justify-center items-center h-6'>
+          {t('profile.loading')}
+        </div>
+      }
+      {userFavourities &&
+         userFavourities.length > 0 &&
+         <>
+           <div className='flex flex-wrap gap-4 p-6'>
+             {userFavourities.map((listing) => (
                <ItemListing
                  listing={listing} key={listing._id}
                  onDelete={() => handleListingDelete(listing._id)}

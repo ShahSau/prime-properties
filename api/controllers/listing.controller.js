@@ -113,3 +113,21 @@ export const getListings = async (req, res, next) => {
     next(error)
   }
 }
+
+export const getUserFavourities = async (req, res, next) => {
+  try{
+    const fav = req.body.favourities
+    const response =[]
+    const properties = await Listing.find()
+    properties.map(property => {
+      const iid = property._id.toString()
+      if(fav.includes(iid)){
+        response.push(property)
+      }
+    })
+
+    return res.status(200).json(response)
+  } catch (error) {
+    next(error)
+  }
+}

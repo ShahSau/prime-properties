@@ -40,6 +40,51 @@ export const updateUser = async (req, res, next) => {
   }
 }
 
+export const addUserFav = async (req, res, next) => {
+
+  if (req.user.id !== req.params.id)
+    return next(errorHandler(401, 'You can only update your own account!'))
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: {
+          favorites: req.body.listingId,
+        },
+      },
+      { new: true }
+    )
+
+    const { ...rest } = updatedUser._doc
+
+    res.status(200).json(rest)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const removeUserFav = async (req, res, next) => {
+  if (req.user.id !== req.params.id)
+    return next(errorHandler(401, 'You can only update your own account!'))
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $pull: {
+          favorites: req.body.listingId,
+        },
+      },
+      { new: true }
+    )
+
+    const { ...rest } = updatedUser._doc
+
+    res.status(200).json(rest)
+  } catch (error) {
+    next(error)
+  }
+}
+
 export const deleteUser = async (req, res, next) => {
   if (req.user.id !== req.params.id)
     return next(errorHandler(401, 'You can only delete your own account!'))
@@ -51,6 +96,8 @@ export const deleteUser = async (req, res, next) => {
     next(error)
   }
 }
+
+
 
 // only own listing can be viewed
 export const getUserListings = async (req, res, next) => {
