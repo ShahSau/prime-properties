@@ -38,6 +38,7 @@ const Profile = () => {
   const [ fetcherror, setFetchError] = useState(null)
   const [favload, setFavLoad] = useState(false)
   const [listload, setListLoad] = useState(false)
+  const [hideShow, setHideShow] = useState(false)
 
   const dispatch = useDispatch()
   const { t, i18n } = useTranslation()
@@ -124,6 +125,7 @@ const Profile = () => {
 
   const handleShowListings = async () => {
     setListLoad(true)
+    setHideShow(true)
     try {
       setShowListingsError(false)
       const res = await fetch(`/api/user/listings/${currentUser._id}`)
@@ -140,6 +142,11 @@ const Profile = () => {
 
       setShowListingsError(true)
     }
+  }
+  const handleHideListings = () => {
+    setHideShow(false)
+    setUserListings([])
+    setUserFavourities([])
   }
 
   const handleListingDelete = async (listingId) => {
@@ -164,6 +171,7 @@ const Profile = () => {
 
   const handleUserFav = async () => {
     setFavLoad(true)
+    setHideShow(true)
     try {
       const res = await fetch('/api/listing/favourities', {
         method: 'POST',
@@ -391,9 +399,18 @@ const Profile = () => {
         </div>
       </motion.div>
       {/* Listings */}
-      {currentUser.type === 'both' && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+      {currentUser.type === 'both' &&
+      !hideShow
+      && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
         <button onClick={handleShowListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
           {t('profile.showListings')}
+        </button>
+      </div>}
+      {currentUser.type === 'both' &&
+      hideShow
+      && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+        <button onClick={handleHideListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
+          {t('profile.hideListings')}
         </button>
       </div>}
       {listload &&
@@ -415,9 +432,18 @@ const Profile = () => {
          </>
       }
 
-      {currentUser.type === 'buyer' && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+      {currentUser.type === 'buyer' &&
+      !hideShow &&
+      <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
         <button onClick={handleUserFav} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
           {t('profile.showFavourites')}
+        </button>
+      </div>}
+      {currentUser.type === 'buyer' &&
+      hideShow
+      && <div className='col-span-2 mb-6 max-h-12 w-full object-contain lg:col-span-1 mt-6 text-center'>
+        <button onClick={handleHideListings} className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md">
+          {t('profile.hideListings')}
         </button>
       </div>}
       {favload &&
