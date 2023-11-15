@@ -25,7 +25,9 @@ export default function CreateListing() {
   const [formData, setFormData] = useState({
     imageUrls: [],
     name: '',
-    description: '',
+    description_en: '',
+    description_fi: '',
+    description_de: '',
     address: '',
     type: 'rent',
     bedrooms: 1,
@@ -235,6 +237,42 @@ export default function CreateListing() {
 
               {/* description*/}
 
+              <div className='border-t border-gray-300'>
+                <div className="mt-4">
+                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                    {t('createListing.desc')}
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      type='text'
+                      placeholder='Description (English)'
+                      className='block w-full p-6 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                      id='description_en'
+                      required
+                      onChange={handleChange}
+                      value={formData.description_en}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className='border-t border-gray-300'>
+                <div className="mt-4">
+                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                    {t('createListing.desc')}
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      type='text'
+                      placeholder='Description'
+                      className='block w-full p-6 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                      id='description'
+                      required
+                      onChange={handleChange}
+                      value={formData.description}
+                    />
+                  </div>
+                </div>
+              </div>
               <div className='border-t border-gray-300'>
                 <div className="mt-4">
                   <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">

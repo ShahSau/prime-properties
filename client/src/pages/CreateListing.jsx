@@ -22,7 +22,9 @@ export default function CreateListing() {
   const [formData, setFormData] = useState({
     imageUrls: [],
     name: '',
-    description: '',
+    description_en: '',
+    description_fi: '',
+    description_de: '',
     address: '',
     type: 'rent',
     bedrooms: 1,
@@ -227,12 +229,48 @@ export default function CreateListing() {
                   <div className="mt-1">
                     <textarea
                       type='text'
-                      placeholder='Description'
+                      placeholder='Description (English)'
                       className='block w-full p-6 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-                      id='description'
+                      id='description_en'
                       required
                       onChange={handleChange}
-                      value={formData.description}
+                      value={formData.description_en}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className='border-t border-gray-300'>
+                <div className="mt-4">
+                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                    {t('createListing.desc')}
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      type='text'
+                      placeholder='Description (Finnish)'
+                      className='block w-full p-6 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                      id='description_fi'
+                      required
+                      onChange={handleChange}
+                      value={formData.description_fi}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className='border-t border-gray-300'>
+                <div className="mt-4">
+                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                    {t('createListing.desc')}
+                  </label>
+                  <div className="mt-1">
+                    <textarea
+                      type='text'
+                      placeholder='Description (German)'
+                      className='block w-full p-6 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                      id='description_de'
+                      required
+                      onChange={handleChange}
+                      value={formData.description_de}
                     />
                   </div>
                 </div>

@@ -37,6 +37,7 @@ const Profile = () => {
   const [userFavourities, setUserFavourities] = useState([])
   const [ fetcherror, setFetchError] = useState(null)
   const [favload, setFavLoad] = useState(false)
+  const [listload, setListLoad] = useState(false)
 
   const dispatch = useDispatch()
   const { t, i18n } = useTranslation()
@@ -122,9 +123,10 @@ const Profile = () => {
   }
 
   const handleShowListings = async () => {
+    setListLoad(true)
     try {
       setShowListingsError(false)
-      const res = await fetch(`/api/user/listing/${currentUser._id}`)
+      const res = await fetch(`/api/user/listings/${currentUser._id}`)
       const data = await res.json()
       if (data.success === false) {
         setShowListingsError(true)
@@ -133,6 +135,7 @@ const Profile = () => {
       }
 
       setUserListings(data)
+      setListLoad(false)
     } catch (error) {
 
       setShowListingsError(true)
@@ -173,17 +176,15 @@ const Profile = () => {
       })
       const data = await res.json()
       if (data.success === false) {
-        //setFetchError(data.message)
+        setFetchError(data.message)
         return
       }
       setUserFavourities(data)
       setFavLoad(false)
-      // dispatch(updateUserSuccess(data))
-      // setUpdateSuccess(true)
+      setUpdateSuccess(true)
     } catch (error) {
       setFetchError(error.message)
 
-      // dispatch(updateUserFailure(error.message))
     }
   }
 
@@ -213,11 +214,11 @@ const Profile = () => {
 
 
 
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4 border-b pb-4 border-gray-900/10'>
+      <form onSubmit={handleSubmit} className='flex flex-col md:gap-4 border-b pb-4 border-gray-900/10 items-center'>
         <div className="space-y-12">
           <div className="grid grid-cols-1 gap-x-8 gap-y-10  pb-12 md:grid-cols-3">
             <motion.div
-              className='p-6 flex-cols flex-1 ml-60 md:ml-28'
+              className='p-6 flex-cols items-center text-center justify-center flex-1 md:ml-20 '
               initial={{ x: '-100%', opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 2,delay: 0.25 }}
@@ -270,7 +271,7 @@ const Profile = () => {
 
 
             <motion.div
-              className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2 ml-48 md:ml-0"
+              className="grid max-w-2xl items-center texap-x-6 gap"
               initial={{ y: '100%', opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 2,delay: 0.25 }}
@@ -395,6 +396,11 @@ const Profile = () => {
           {t('profile.showListings')}
         </button>
       </div>}
+      {listload &&
+        <div className='flex justify-center items-center h-6'>
+          {t('profile.loading')}
+        </div>
+      }
       {userListings &&
          userListings.length > 0 &&
          <>

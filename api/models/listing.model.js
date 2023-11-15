@@ -6,7 +6,15 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    description: {
+    description_en: {
+      type: String,
+      required: true,
+    },
+    description_fi: {
+      type: String,
+      required: true,
+    },
+    description_de: {
       type: String,
       required: true,
     },

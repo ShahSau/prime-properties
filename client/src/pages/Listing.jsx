@@ -124,6 +124,7 @@ export default function Listing() {
         className='text-center m-7 text-4xl cursor-pointer'
         onClick={() => navigate(-1)}
       />
+      {console.log(i18n.language)}
       {listing && !loading && !error && (
         <div>
           {/* Image gallery */}
@@ -381,7 +382,7 @@ export default function Listing() {
                   </div>
                 </div>
                 <div className="space-y-6 mt-10">
-                  <p className="text-base text-gray-900">{listing.description}</p>
+                  <p className="text-base text-gray-900">{i18n.language === 'en' ?  listing.description_en : i18n.language === 'fi' ? listing.description_fi : listing.description_de}</p>
                 </div>
               </div>
             </motion.div>

@@ -2,7 +2,10 @@ import React from 'react'
 import { AiOutlineLink,AiTwotoneDelete } from 'react-icons/ai'
 import { FiEdit2 } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 const ItemListing = ({ listing, onDelete }) => {
+  const { t, i18n } = useTranslation()
+  console.log(listing)
   return (
     <div className="py-4 ">
       <div className="shadow-xl group container shadow-stone-500 rounded-md bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
@@ -17,7 +20,7 @@ const ItemListing = ({ listing, onDelete }) => {
           <div className="py-8 px-4 bg-white  rounded-b-md fd-cl group-hover:opacity-25">
             <span className="block text-lg text-gray-800 font-bold tracking-wide truncate "> {listing.name}</span>
             <span  className="block text-gray-600 text-sm">
-              {listing.description.length < 300 ? listing.description : listing.description.substring(0, 300) + '...'}
+              {i18n.language === 'en' ?  listing.description_en.substring(0, 300)+ '...' : i18n.language === 'fi' ? listing.description_fi.substring(0, 300)+ '...' : listing.description_de.substring(0, 300)+ '...'}
             </span>
           </div>
         </div>

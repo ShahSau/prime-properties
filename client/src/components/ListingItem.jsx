@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import { MdLocationOn } from 'react-icons/md'
+import { useTranslation } from 'react-i18next'
 import {
   FaBath,
   FaBed,
 } from 'react-icons/fa'
 export default function ListingItem({ listing }) {
+  const { t, i18n } = useTranslation()
   return (
     <div className='bg-white shadow-md hover:shadow-xl transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px] mb-6'>
       <Link to={`/listing/${listing._id}`}>
@@ -27,7 +29,7 @@ export default function ListingItem({ listing }) {
             </p>
           </div>
           <p className='text-sm text-gray-600 line-clamp-2'>
-            {listing.description}
+            {i18n.language === 'en' ?  listing.description_en : i18n.language === 'fi' ? listing.description_fi : listing.description_de}
           </p>
           <p className='text-slate-500 mt-2 font-semibold '>
             $
