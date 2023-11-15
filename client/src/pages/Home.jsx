@@ -81,7 +81,7 @@ const Home = () => {
       {/* top */}
 
       <motion.div
-        className='flex flex-col gap-6 p-28 px-3 max-w-full items-center mx-auto bg-[url("pic.jpg")] bg-cover bg-center bg-no-repeat'
+        className='flex flex-col gap-6 p-28 px-3 max-w-full items-center mx-auto bg-sky-200 bg-cover bg-center bg-no-repeat'
         initial={{ y: '-100%', opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 2,delay: 0.25 }}
@@ -92,7 +92,7 @@ const Home = () => {
           <br />
           {t('home.head2')}
         </h1>
-        <div className='text-white text-xs sm:text-sm'>
+        <div className='text-slate-500 text-xs sm:text-sm'>
           {t('home.para1')}
           <br />
           {t('home.para2')}
