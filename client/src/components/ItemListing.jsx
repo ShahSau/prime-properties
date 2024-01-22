@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 const ItemListing = ({ listing, onDelete }) => {
   const { t, i18n } = useTranslation()
-  console.log(listing)
   return (
     <div className="py-4 ">
       <div className="shadow-xl group container shadow-stone-500 rounded-md bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
