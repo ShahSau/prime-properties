@@ -14,10 +14,8 @@ const app = express()
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
-    console.log('Connected to MongoDB!!')
   })
   .catch((err) => {
-    console.log(err)
   })
 
 const __dirname = path.resolve()
@@ -26,7 +24,6 @@ const __dirname = path.resolve()
 app.use(cookieParser())
 //app.use(express.json());
 app.listen(3000, () => {
-  console.log('Server listening on port 3000')
 })
 app.use(bodyParser.json())
 app.use('/api/user', useRouter)

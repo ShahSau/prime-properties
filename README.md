@@ -61,14 +61,13 @@ Prime properties is a comprehensive platform built using the MERN (MongoDB, Expr
 ## 📦 Features
 <!-- Title: Elevated User Experience and Robust Security: A Feature-Packed Platform with Multilingual Support, JWT Authentication, and Role-Based Authorization -->
 
-Prime properties integrates language switching between English, German, and Finnish, employs JWT for secure authentication, utilizes Google Login for seamless onboarding, adopts Redux for efficient state management, and introduces favorites listing and role-based authorization to ensure a tailored, the dynamic motion design of Framer Motion and secure user experience.
+Prime properties integrates language switching between English, German, and Finnish, employs JWT for secure authentication, utilizes Google Login for seamless onboarding, adopts Redux for efficient state management, and introduces favorites listing and role-based authorization to ensure a tailored, the dynamic motion design of Framer Motion, firebase for image upload and secure user experience.
 
 Multilingual Support:
 Seamlessly switch between English, German, and Finnish to provide users with a personalized and comfortable experience in their preferred language.
 
-JWT Authentication:
-Ensure robust security with JSON Web Token (JWT) authentication. Safeguard user data and transactions with state-of-the-art encryption and secure access control.
-
+JWT and Firebase for Authentication:
+Ensure robust security with JSON Web Token (JWT) authentication and Firebase. Safeguard user data and transactions with state-of-the-art encryption and secure access control. and Firebase.
 Google Login:
 Streamline user onboarding with the convenience of Google Login. Enhance user adoption by simplifying the registration process and improving overall accessibility.
 
@@ -86,6 +85,9 @@ Emailing the landlord about the listing.
 
 Framer Motion for Dynamic Design:
 Elevate the visual appeal of your platform with Framer Motion, a powerful motion design library. 
+
+Firebase Image Upload:
+Enable users to seamlessly upload images through Firebase
 
 ---
 

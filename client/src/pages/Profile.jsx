@@ -156,7 +156,6 @@ const Profile = () => {
       })
       const data = await res.json()
       if (data.success === false) {
-        console.log(data.message)
         return
       }
 

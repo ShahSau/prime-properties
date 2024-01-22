@@ -124,7 +124,6 @@ export default function Listing() {
         className='text-center m-7 text-4xl cursor-pointer'
         onClick={() => navigate(-1)}
       />
-      {console.log(i18n.language)}
       {listing && !loading && !error && (
         <div>
           {/* Image gallery */}
