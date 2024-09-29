@@ -18,21 +18,21 @@
 <p align="center">
 	<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
 	<img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React">
-    	<img src="https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white" alt="Express">
-    	<img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" alt="tailwindCss">
-    	<img src="https://img.shields.io/badge/Firebase-FFCA28.svg?style=flat&logo=Firebase&logoColor=black" alt="Firebase">
-    	<img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white" alt="redux">
-    	<img src="https://img.shields.io/badge/JWT-black?style=flat&logo=JSON%20web%20tokens" alr="JWT">
-    	<img src="https://img.shields.io/badge/i18next-26A69A.svg?style=flat&logo=i18next&logoColor=white" alt="i18next">
+    <img src="https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white" alt="Express">
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" alt="tailwindCss">
+    <img src="https://img.shields.io/badge/Firebase-FFCA28.svg?style=flat&logo=Firebase&logoColor=black" alt="Firebase">
+    <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white" alt="redux">
+    <img src="https://img.shields.io/badge/JWT-black?style=flat&logo=JSON%20web%20tokens" alr="JWT">
+    <img src="https://img.shields.io/badge/i18next-26A69A.svg?style=flat&logo=i18next&logoColor=white" alt="i18next">
 	<br>
-    	<img src="https://img.shields.io/badge/Framer-black?style=flat&logo=framer&logoColor=blue" alt="Framer-motion">
-    	<img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white" alt="mongodb">
+    <img src="https://img.shields.io/badge/Framer-black?style=flat&logo=framer&logoColor=blue" alt="Framer-motion">
+    <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white" alt="mongodb">
 	<img src="https://img.shields.io/badge/Swiper-6332F6.svg?style=flat&logo=Swiper&logoColor=white" alt="Swiper">
-    	<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
+    <img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
 	<img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&logo=ESLint&logoColor=white" alt="ESLint">
-    	<img src="https://img.shields.io/badge/Autoprefixer-DD3735.svg?style=flat&logo=Autoprefixer&logoColor=white" alt="Autoprefixer">
-    	<img src="https://img.shields.io/badge/Nodemon-76D04B.svg?style=flat&logo=Nodemon&logoColor=white" alt="Nodemon">
-    	<img src="https://img.shields.io/badge/Vite-646CFF.svg?style=flat&logo=Vite&logoColor=white" alt="Vite">
+    <img src="https://img.shields.io/badge/Autoprefixer-DD3735.svg?style=flat&logo=Autoprefixer&logoColor=white" alt="Autoprefixer">
+    <img src="https://img.shields.io/badge/Nodemon-76D04B.svg?style=flat&logo=Nodemon&logoColor=white" alt="Nodemon">
+    <img src="https://img.shields.io/badge/Vite-646CFF.svg?style=flat&logo=Vite&logoColor=white" alt="Vite">
 </p>
 <hr>
 
@@ -56,7 +56,6 @@ Prime properties is a comprehensive platform built using the MERN (MongoDB, Expr
 ---
 
 ## 📦 Features
-<!-- Title: Elevated User Experience and Robust Security: A Feature-Packed Platform with Multilingual Support, JWT Authentication, and Role-Based Authorization -->
 
 Prime properties integrates language switching between English, German, and Finnish, employs JWT for secure authentication, utilizes Google Login for seamless onboarding, adopts Redux for efficient state management, and introduces favorites listing and role-based authorization to ensure a tailored, the dynamic motion design of Framer Motion, firebase for image upload and secure user experience.
 
@@ -275,6 +274,8 @@ Enable users to seamlessly upload images through Firebase
 Ensure you have the following dependencies installed on your system:
 
 * **node**: `version > = 16.0.0`
+* **firebase**: `version >=10.3.1`
+* **react**: `version 18.2.0`
 
 ### ⚙️ Installation
 
@@ -298,13 +299,20 @@ npm install
 
 ### 🤖 Running prime-properties
 
+
 Use the following command to run prime-properties:
 
 Run backend
+Create an .env file with following keys: <br />
+`MONGO` <br />
+`JWT_SECRET` <br />
+
 ```sh 
 npm run dev
 ```
 Run frontend
+Create an .env file with following keys: <br />
+`VITE_FIREBASE_API_KEY`
 ```sh
 cd client
 npm run dev
